@@ -5,4 +5,10 @@
 //  Created by BOONGKI KWAK on 2023/02/08.
 //
 
-import Foundation
+import UIKit
+
+class ContentCell: UICollectionViewCell {
+    
+    static let reuseIdentifier = String(describing: ContentCell.self)
+    
+}
