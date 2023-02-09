@@ -8,8 +8,9 @@
 import UIKit
 
 class ModifyingCell: UICollectionViewCell {
-    
     // MARK: - Outlet
+    @IBOutlet weak var addIcon: UIImageView!
+    @IBOutlet weak var DeleteIcon: UIImageView!
     
     // MARK: - Property
     static let uiNib = UINib(nibName: "ModifyingCell", bundle: nil)

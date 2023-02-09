@@ -10,6 +10,9 @@ import UIKit
 class FolderCell: UICollectionViewCell {
     
     // MARK: - Outlet
+    @IBOutlet weak var folderName: UILabel!
+    @IBOutlet weak var folderCreateDate: UILabel!
+    @IBOutlet weak var folderMemo: UITextView!
     
     // MARK: - Property
     static let uiNib = UINib(nibName: "FolderCell", bundle: nil)

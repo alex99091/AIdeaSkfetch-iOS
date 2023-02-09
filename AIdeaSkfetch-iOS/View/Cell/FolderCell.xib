@@ -59,6 +59,11 @@
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="285" height="140"/>
+            <connections>
+                <outlet property="folderCreateDate" destination="ELc-hQ-7Ea" id="MGI-Kj-PAg"/>
+                <outlet property="folderMemo" destination="tlf-ts-cE2" id="Qlb-TN-5ay"/>
+                <outlet property="folderName" destination="jxt-hU-Nql" id="fFG-hD-FWF"/>
+            </connections>
             <point key="canvasLocation" x="61.594202898550726" y="48.883928571428569"/>
         </collectionViewCell>
     </objects>
