@@ -22,13 +22,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="knx-HL-s9a">
                                     <size key="itemSize" width="127" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="REd-Bl-7A1">
-                                        <rect key="frame" x="0.0" y="50" width="127" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Q19-Jf-9Tc">
                                             <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
@@ -36,28 +36,6 @@
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MainHeaderView" id="g6B-GS-iUz" customClass="MainHeaderView" customModule="AIdeaSkfetch_iOS" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9d-yA-cAU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.89000000000000001" green="0.38405551090000001" blue="0.3792063021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="T9d-yA-cAU" secondAttribute="bottom" id="2Wu-cj-c40"/>
-                                        <constraint firstAttribute="trailing" secondItem="T9d-yA-cAU" secondAttribute="trailing" id="JDN-Xf-qib"/>
-                                        <constraint firstItem="T9d-yA-cAU" firstAttribute="top" secondItem="g6B-GS-iUz" secondAttribute="top" id="Ynn-mV-wGb"/>
-                                        <constraint firstItem="T9d-yA-cAU" firstAttribute="leading" secondItem="g6B-GS-iUz" secondAttribute="leading" id="bkR-OG-MTc"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="mainHeaderView" destination="T9d-yA-cAU" id="kIT-8O-nfL"/>
-                                    </connections>
-                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -66,12 +44,12 @@
                             <constraint firstItem="ngt-ua-1PS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FnQ-qO-wcl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ngt-ua-1PS" secondAttribute="bottom" id="IpW-j0-UW9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ngt-ua-1PS" secondAttribute="trailing" id="cHJ-2E-85f"/>
-                            <constraint firstItem="ngt-ua-1PS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yvV-A9-cr1"/>
+                            <constraint firstItem="ngt-ua-1PS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="88" id="yvV-A9-cr1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jze-cD-yhH"/>
                     <connections>
-                        <outlet property="contentCollectionView" destination="ngt-ua-1PS" id="gJ3-9l-e7m"/>
+                        <outlet property="mainCollectionView" destination="ngt-ua-1PS" id="CCm-Bi-tGd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
