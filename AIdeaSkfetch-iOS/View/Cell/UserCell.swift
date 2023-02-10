@@ -13,8 +13,7 @@ class UserCell: UICollectionViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userIconImage: UIImageView!
-    @IBOutlet weak var introductionLabel: UILabel!
-    // MARK: - Outlet
+    
     // MARK: - Property
     static let uiNib = UINib(nibName: "UserCell", bundle: nil)
     static let reuseIdentifier = String(describing: UserCell.self)
@@ -25,9 +24,6 @@ class UserCell: UICollectionViewCell {
     }
     
     // MARK: - Method
-    func designLabel() {
-        
-    }
     
     
 }

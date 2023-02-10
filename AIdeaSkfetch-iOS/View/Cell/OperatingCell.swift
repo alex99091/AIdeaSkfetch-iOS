@@ -7,16 +7,14 @@
 
 import UIKit
 
-class FolderCell: UICollectionViewCell {
+class OperatingCell: UICollectionViewCell {
     
     // MARK: - Outlet
-    @IBOutlet weak var folderName: UILabel!
-    @IBOutlet weak var folderCreateDate: UILabel!
-    @IBOutlet weak var folderMemo: UITextView!
+    @IBOutlet weak var operatingIcon: UIImageView!
     
     // MARK: - Property
-    static let uiNib = UINib(nibName: "FolderCell", bundle: nil)
-    static let reuseIdentifier = String(describing: FolderCell.self)
+    static let uiNib = UINib(nibName: "OperatingCell", bundle: nil)
+    static let reuseIdentifier = String(describing: OperatingCell.self)
     
     // MARK: - Cell LifeCycle
     override class func awakeFromNib() {

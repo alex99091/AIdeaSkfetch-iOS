@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2633B71C299368C900BDF0BC /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2633B71B299368C900BDF0BC /* ContentCell.swift */; };
-		2633B71E299368D500BDF0BC /* ContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2633B71D299368D500BDF0BC /* ContentCell.xib */; };
+		2633B71C299368C900BDF0BC /* CanvasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2633B71B299368C900BDF0BC /* CanvasCell.swift */; };
+		2633B71E299368D500BDF0BC /* CanvasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2633B71D299368D500BDF0BC /* CanvasCell.xib */; };
+		26646D64299630BE0089F7F0 /* Sunflower-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26646D61299630BE0089F7F0 /* Sunflower-Bold.ttf */; };
+		26646D65299630BE0089F7F0 /* Sunflower-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26646D62299630BE0089F7F0 /* Sunflower-Light.ttf */; };
+		26646D66299630BE0089F7F0 /* Sunflower-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26646D63299630BE0089F7F0 /* Sunflower-Medium.ttf */; };
+		26646D6A299647D80089F7F0 /* OperatingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26646D69299647D80089F7F0 /* OperatingCell.xib */; };
+		26646D6C29965F360089F7F0 /* CanvasDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26646D6B29965F360089F7F0 /* CanvasDataSource.swift */; };
 		2676D3A229949BCC005EBC02 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676D3A129949BCC005EBC02 /* UserCell.swift */; };
 		2676D3A429949BDE005EBC02 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2676D3A329949BDE005EBC02 /* UserCell.xib */; };
-		269AB6372994CC9300401D12 /* CanvasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269AB6332994CC9300401D12 /* CanvasCell.xib */; };
 		269AB6382994CC9300401D12 /* ToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269AB6342994CC9300401D12 /* ToolBarCell.xib */; };
 		269AB63C2995388C00401D12 /* CanvasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269AB63B2995388C00401D12 /* CanvasVC.swift */; };
 		26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A272991F07D0032A6FF /* AppDelegate.swift */; };
@@ -20,19 +24,22 @@
 		26CB6A2F2991F07D0032A6FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26CB6A2D2991F07D0032A6FF /* Main.storyboard */; };
 		26CB6A312991F07F0032A6FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26CB6A302991F07F0032A6FF /* Assets.xcassets */; };
 		26CB6A342991F07F0032A6FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26CB6A322991F07F0032A6FF /* LaunchScreen.storyboard */; };
-		26D0E7D32994A57A008A603D /* ModifyingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7D22994A57A008A603D /* ModifyingCell.swift */; };
-		26D0E7D52994A58C008A603D /* ModifyingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D0E7D42994A58B008A603D /* ModifyingCell.xib */; };
-		26D0E7D72994A8C9008A603D /* FolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D0E7D62994A8C9008A603D /* FolderCell.xib */; };
-		26D0E7D92994A8D6008A603D /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7D82994A8D6008A603D /* FolderCell.swift */; };
+		26D0E7D32994A57A008A603D /* IntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7D22994A57A008A603D /* IntroCell.swift */; };
+		26D0E7D52994A58C008A603D /* IntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D0E7D42994A58B008A603D /* IntroCell.xib */; };
+		26D0E7D92994A8D6008A603D /* OperatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7D82994A8D6008A603D /* OperatingCell.swift */; };
 		26D0E7DB2994B638008A603D /* userData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7DA2994B638008A603D /* userData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2633B71B299368C900BDF0BC /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
-		2633B71D299368D500BDF0BC /* ContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentCell.xib; sourceTree = "<group>"; };
+		2633B71B299368C900BDF0BC /* CanvasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasCell.swift; sourceTree = "<group>"; };
+		2633B71D299368D500BDF0BC /* CanvasCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CanvasCell.xib; sourceTree = "<group>"; };
+		26646D61299630BE0089F7F0 /* Sunflower-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sunflower-Bold.ttf"; sourceTree = "<group>"; };
+		26646D62299630BE0089F7F0 /* Sunflower-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sunflower-Light.ttf"; sourceTree = "<group>"; };
+		26646D63299630BE0089F7F0 /* Sunflower-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sunflower-Medium.ttf"; sourceTree = "<group>"; };
+		26646D69299647D80089F7F0 /* OperatingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperatingCell.xib; sourceTree = "<group>"; };
+		26646D6B29965F360089F7F0 /* CanvasDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasDataSource.swift; sourceTree = "<group>"; };
 		2676D3A129949BCC005EBC02 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		2676D3A329949BDE005EBC02 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
-		269AB6332994CC9300401D12 /* CanvasCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CanvasCell.xib; sourceTree = "<group>"; };
 		269AB6342994CC9300401D12 /* ToolBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolBarCell.xib; sourceTree = "<group>"; };
 		269AB63B2995388C00401D12 /* CanvasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasVC.swift; sourceTree = "<group>"; };
 		26CB6A242991F07D0032A6FF /* AIdeaSkfetch-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AIdeaSkfetch-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,10 +50,9 @@
 		26CB6A302991F07F0032A6FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26CB6A332991F07F0032A6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26CB6A352991F07F0032A6FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26D0E7D22994A57A008A603D /* ModifyingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyingCell.swift; sourceTree = "<group>"; };
-		26D0E7D42994A58B008A603D /* ModifyingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModifyingCell.xib; sourceTree = "<group>"; };
-		26D0E7D62994A8C9008A603D /* FolderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FolderCell.xib; sourceTree = "<group>"; };
-		26D0E7D82994A8D6008A603D /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
+		26D0E7D22994A57A008A603D /* IntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCell.swift; sourceTree = "<group>"; };
+		26D0E7D42994A58B008A603D /* IntroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroCell.xib; sourceTree = "<group>"; };
+		26D0E7D82994A8D6008A603D /* OperatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingCell.swift; sourceTree = "<group>"; };
 		26D0E7DA2994B638008A603D /* userData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,19 +93,36 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		26646D5529962D0E0089F7F0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				26646D5629962D130089F7F0 /* Font */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26646D5629962D130089F7F0 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				26646D61299630BE0089F7F0 /* Sunflower-Bold.ttf */,
+				26646D62299630BE0089F7F0 /* Sunflower-Light.ttf */,
+				26646D63299630BE0089F7F0 /* Sunflower-Medium.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		2674B5BB299299A5004BD9BA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				2633B71B299368C900BDF0BC /* ContentCell.swift */,
-				26D0E7D82994A8D6008A603D /* FolderCell.swift */,
-				26D0E7D22994A57A008A603D /* ModifyingCell.swift */,
+				2633B71B299368C900BDF0BC /* CanvasCell.swift */,
+				26D0E7D82994A8D6008A603D /* OperatingCell.swift */,
+				26D0E7D22994A57A008A603D /* IntroCell.swift */,
 				2676D3A129949BCC005EBC02 /* UserCell.swift */,
-				269AB6332994CC9300401D12 /* CanvasCell.xib */,
-				2633B71D299368D500BDF0BC /* ContentCell.xib */,
-				26D0E7D62994A8C9008A603D /* FolderCell.xib */,
-				26D0E7D42994A58B008A603D /* ModifyingCell.xib */,
+				2633B71D299368D500BDF0BC /* CanvasCell.xib */,
+				26D0E7D42994A58B008A603D /* IntroCell.xib */,
 				269AB6342994CC9300401D12 /* ToolBarCell.xib */,
 				2676D3A329949BDE005EBC02 /* UserCell.xib */,
+				26646D69299647D80089F7F0 /* OperatingCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -108,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				26D0E7DA2994B638008A603D /* userData.swift */,
+				26646D6B29965F360089F7F0 /* CanvasDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +173,7 @@
 		26CB6A262991F07D0032A6FF /* AIdeaSkfetch-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				26646D5529962D0E0089F7F0 /* Extensions */,
 				26CA614B2993661E004216D9 /* Controller */,
 				26CA614A29936617004216D9 /* View */,
 				26CA614929936613004216D9 /* Model */,
@@ -220,12 +245,14 @@
 				26CB6A342991F07F0032A6FF /* LaunchScreen.storyboard in Resources */,
 				26CB6A312991F07F0032A6FF /* Assets.xcassets in Resources */,
 				26CB6A2F2991F07D0032A6FF /* Main.storyboard in Resources */,
-				269AB6372994CC9300401D12 /* CanvasCell.xib in Resources */,
-				2633B71E299368D500BDF0BC /* ContentCell.xib in Resources */,
+				2633B71E299368D500BDF0BC /* CanvasCell.xib in Resources */,
 				269AB6382994CC9300401D12 /* ToolBarCell.xib in Resources */,
-				26D0E7D72994A8C9008A603D /* FolderCell.xib in Resources */,
-				26D0E7D52994A58C008A603D /* ModifyingCell.xib in Resources */,
+				26646D64299630BE0089F7F0 /* Sunflower-Bold.ttf in Resources */,
+				26D0E7D52994A58C008A603D /* IntroCell.xib in Resources */,
+				26646D65299630BE0089F7F0 /* Sunflower-Light.ttf in Resources */,
 				2676D3A429949BDE005EBC02 /* UserCell.xib in Resources */,
+				26646D66299630BE0089F7F0 /* Sunflower-Medium.ttf in Resources */,
+				26646D6A299647D80089F7F0 /* OperatingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,15 +263,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2633B71C299368C900BDF0BC /* ContentCell.swift in Sources */,
-				26D0E7D32994A57A008A603D /* ModifyingCell.swift in Sources */,
+				2633B71C299368C900BDF0BC /* CanvasCell.swift in Sources */,
+				26D0E7D32994A57A008A603D /* IntroCell.swift in Sources */,
 				26D0E7DB2994B638008A603D /* userData.swift in Sources */,
 				26CB6A2C2991F07D0032A6FF /* MainVC.swift in Sources */,
 				269AB63C2995388C00401D12 /* CanvasVC.swift in Sources */,
 				26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */,
+				26646D6C29965F360089F7F0 /* CanvasDataSource.swift in Sources */,
 				26CB6A2A2991F07D0032A6FF /* SceneDelegate.swift in Sources */,
 				2676D3A229949BCC005EBC02 /* UserCell.swift in Sources */,
-				26D0E7D92994A8D6008A603D /* FolderCell.swift in Sources */,
+				26D0E7D92994A8D6008A603D /* OperatingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
