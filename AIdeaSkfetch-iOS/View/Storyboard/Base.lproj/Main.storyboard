@@ -43,127 +43,6 @@
             </objects>
             <point key="canvasLocation" x="1497.1014492753625" y="32.8125"/>
         </scene>
-        <!--CanvasVC-->
-        <scene sceneID="IpE-tA-RPY">
-            <objects>
-                <viewController storyboardIdentifier="CanvasVC" id="0pI-Rj-UzL" customClass="CanvasVC" customModule="AIdeaSkfetch_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6wC-SO-dys">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bV0-U0-vbA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kjp-2m-UdB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cet-oa-jc4" userLabel="BackButton">
-                                <rect key="frame" x="10" y="44" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="2W7-Hf-EjV"/>
-                                    <constraint firstAttribute="height" constant="20" id="50b-nF-mJ9"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.left.square" catalog="system"/>
-                                <connections>
-                                    <action selector="backVC:" destination="0pI-Rj-UzL" eventType="touchUpInside" id="Qrf-gI-TUX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNt-Uj-Rye" userLabel="PenButton">
-                                <rect key="frame" x="10" y="84" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="GpD-Cc-Qk4"/>
-                                    <constraint firstAttribute="width" constant="20" id="oe6-xV-8MF"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="applepencil" catalog="system" title=""/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gG2-2z-1SN" userLabel="SprayButton">
-                                <rect key="frame" x="40" y="84" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="Slo-T8-mFI"/>
-                                    <constraint firstAttribute="height" constant="20" id="v0A-47-tGS"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="scribble.variable" catalog="system" title=""/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNk-Hd-Dle" userLabel="ColorButton">
-                                <rect key="frame" x="70" y="84" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="d9b-9i-uXR"/>
-                                    <constraint firstAttribute="height" constant="20" id="jUW-hy-7zB"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="paintpalette" catalog="system" title=""/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsi-Rw-2to" userLabel="RotateButton">
-                                <rect key="frame" x="100" y="84" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="TCt-tW-ewi"/>
-                                    <constraint firstAttribute="width" constant="20" id="juu-kt-4Fp"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="crop.rotate" catalog="system"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-ga-EnW" userLabel="SelectButton">
-                                <rect key="frame" x="130" y="84" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="0Rf-hd-qmc"/>
-                                    <constraint firstAttribute="height" constant="20" id="V35-QG-5ux"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="rectangle.dashed" catalog="system"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTB-Qh-6VP" userLabel="SearchButton">
-                                <rect key="frame" x="160" y="84" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="0yR-qv-uZU"/>
-                                    <constraint firstAttribute="height" constant="20" id="dez-al-ztq"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="magnifyingglass" catalog="system"/>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="YfA-GK-MHo"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="gG2-2z-1SN" firstAttribute="top" secondItem="rNt-Uj-Rye" secondAttribute="top" id="0ST-tO-HpE"/>
-                            <constraint firstItem="bpM-ga-EnW" firstAttribute="leading" secondItem="Gsi-Rw-2to" secondAttribute="trailing" constant="10" id="6Ip-26-dVd"/>
-                            <constraint firstItem="rNt-Uj-Rye" firstAttribute="leading" secondItem="YfA-GK-MHo" secondAttribute="leading" constant="10" id="BzR-b7-0Sy"/>
-                            <constraint firstItem="Gsi-Rw-2to" firstAttribute="top" secondItem="MNk-Hd-Dle" secondAttribute="top" id="IRh-2H-aCP"/>
-                            <constraint firstItem="FTB-Qh-6VP" firstAttribute="top" secondItem="bpM-ga-EnW" secondAttribute="top" id="KrB-eb-b0a"/>
-                            <constraint firstItem="rNt-Uj-Rye" firstAttribute="top" secondItem="cet-oa-jc4" secondAttribute="bottom" constant="20" id="NMX-Z0-c1u"/>
-                            <constraint firstItem="cet-oa-jc4" firstAttribute="leading" secondItem="YfA-GK-MHo" secondAttribute="leading" constant="10" id="O9b-5e-SjW"/>
-                            <constraint firstItem="MNk-Hd-Dle" firstAttribute="leading" secondItem="gG2-2z-1SN" secondAttribute="trailing" constant="10" id="QnF-Ve-YfB"/>
-                            <constraint firstItem="FTB-Qh-6VP" firstAttribute="leading" secondItem="bpM-ga-EnW" secondAttribute="trailing" constant="10" id="R6U-Fz-bT2"/>
-                            <constraint firstItem="cet-oa-jc4" firstAttribute="top" secondItem="YfA-GK-MHo" secondAttribute="top" id="Ycr-rp-1st"/>
-                            <constraint firstItem="bpM-ga-EnW" firstAttribute="top" secondItem="Gsi-Rw-2to" secondAttribute="top" id="du9-Yo-meX"/>
-                            <constraint firstItem="Gsi-Rw-2to" firstAttribute="leading" secondItem="MNk-Hd-Dle" secondAttribute="trailing" constant="10" id="gRj-GY-5X3"/>
-                            <constraint firstItem="MNk-Hd-Dle" firstAttribute="top" secondItem="gG2-2z-1SN" secondAttribute="top" id="qAC-ks-3Gs"/>
-                            <constraint firstItem="gG2-2z-1SN" firstAttribute="leading" secondItem="rNt-Uj-Rye" secondAttribute="trailing" constant="10" id="slV-ff-KiL"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="backButton" destination="cet-oa-jc4" id="eJZ-fo-6nm"/>
-                        <outlet property="canvasImage" destination="bV0-U0-vbA" id="M3n-YB-mgK"/>
-                        <outlet property="drawImage" destination="Kjp-2m-UdB" id="mkD-Uj-bFZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0g-Ma-tgB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2439.130434782609" y="32.8125"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="L1L-F3-35r">
             <objects>
@@ -181,15 +60,65 @@
             </objects>
             <point key="canvasLocation" x="586.95652173913049" y="32.8125"/>
         </scene>
+        <!--CanvasVC-->
+        <scene sceneID="l26-oX-1pH">
+            <objects>
+                <viewController storyboardIdentifier="CanvasVC" id="kGu-he-IDy" customClass="CanvasVC" customModule="AIdeaSkfetch_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U43-Bu-VFT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Alo-yF-r1G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="okH-sd-hll">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bT3-Ec-Vhb" userLabel="Canvas Image">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DfD-RX-kdW" userLabel="Draw Image">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fn-UF-6VQ">
+                                <rect key="frame" x="32" y="54" width="20" height="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="chevron.left.circle.fill" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backVC:" destination="kGu-he-IDy" eventType="touchUpInside" id="Jzm-gv-jaS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LZs-Hj-8r5"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="DfD-RX-kdW" secondAttribute="bottom" id="3Pm-4P-mBY"/>
+                            <constraint firstItem="DfD-RX-kdW" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="60V-Lj-Z8y"/>
+                            <constraint firstItem="bT3-Ec-Vhb" firstAttribute="top" secondItem="okH-sd-hll" secondAttribute="top" id="BgC-72-kur"/>
+                            <constraint firstItem="bT3-Ec-Vhb" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="JNs-BE-J31"/>
+                            <constraint firstItem="DfD-RX-kdW" firstAttribute="top" secondItem="okH-sd-hll" secondAttribute="top" id="OPt-YX-thy"/>
+                            <constraint firstAttribute="trailing" secondItem="DfD-RX-kdW" secondAttribute="trailing" id="PM2-vA-2SO"/>
+                            <constraint firstAttribute="bottom" secondItem="bT3-Ec-Vhb" secondAttribute="bottom" id="QQw-oW-UNh"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Fn-UF-6VQ" secondAttribute="trailing" constant="20" symbolic="YES" id="QlW-xm-6Iu"/>
+                            <constraint firstAttribute="trailing" secondItem="bT3-Ec-Vhb" secondAttribute="trailing" id="g6w-HM-Xpx"/>
+                            <constraint firstItem="0Fn-UF-6VQ" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="10" id="lw4-bu-WPx"/>
+                            <constraint firstItem="0Fn-UF-6VQ" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" constant="32" id="vb6-Nd-8Yh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="canvasImage" destination="bT3-Ec-Vhb" id="tjP-eV-6a8"/>
+                        <outlet property="drawImage" destination="DfD-RX-kdW" id="5i2-qc-Jqb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KPx-f8-baC" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2360.8695652173915" y="32.8125"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="applepencil" catalog="system" width="128" height="113"/>
-        <image name="chevron.left.square" catalog="system" width="128" height="114"/>
-        <image name="crop.rotate" catalog="system" width="114" height="128"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="paintpalette" catalog="system" width="128" height="105"/>
-        <image name="rectangle.dashed" catalog="system" width="128" height="93"/>
-        <image name="scribble.variable" catalog="system" width="128" height="118"/>
+        <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

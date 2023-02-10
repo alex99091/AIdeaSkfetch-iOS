@@ -12,7 +12,6 @@ class CanvasVC: UIViewController {
     // MARK: - Outlet
     @IBOutlet weak var canvasImage: UIImageView!
     @IBOutlet weak var drawImage: UIImageView!
-    @IBOutlet weak var backButton: UIButton!
  
     // MARK: - Property
     static let identifier = String(describing: CanvasVC.self)
@@ -87,6 +86,5 @@ class CanvasVC: UIViewController {
     @IBAction func backVC(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
     
 }
