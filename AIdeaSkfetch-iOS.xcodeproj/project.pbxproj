@@ -7,15 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2620E96E29938D6E00311B54 /* CanvasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2620E96D29938D6E00311B54 /* CanvasVC.swift */; };
 		2633B71C299368C900BDF0BC /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2633B71B299368C900BDF0BC /* ContentCell.swift */; };
 		2633B71E299368D500BDF0BC /* ContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2633B71D299368D500BDF0BC /* ContentCell.xib */; };
 		2676D3A229949BCC005EBC02 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676D3A129949BCC005EBC02 /* UserCell.swift */; };
 		2676D3A429949BDE005EBC02 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2676D3A329949BDE005EBC02 /* UserCell.xib */; };
-		269AB6352994CC9300401D12 /* ToolBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269AB6312994CC9300401D12 /* ToolBarCell.swift */; };
-		269AB6362994CC9300401D12 /* CanvasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269AB6322994CC9300401D12 /* CanvasCell.swift */; };
 		269AB6372994CC9300401D12 /* CanvasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269AB6332994CC9300401D12 /* CanvasCell.xib */; };
 		269AB6382994CC9300401D12 /* ToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269AB6342994CC9300401D12 /* ToolBarCell.xib */; };
+		269AB63C2995388C00401D12 /* CanvasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269AB63B2995388C00401D12 /* CanvasVC.swift */; };
 		26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A272991F07D0032A6FF /* AppDelegate.swift */; };
 		26CB6A2A2991F07D0032A6FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A292991F07D0032A6FF /* SceneDelegate.swift */; };
 		26CB6A2C2991F07D0032A6FF /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A2B2991F07D0032A6FF /* MainVC.swift */; };
@@ -30,15 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2620E96D29938D6E00311B54 /* CanvasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasVC.swift; sourceTree = "<group>"; };
 		2633B71B299368C900BDF0BC /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		2633B71D299368D500BDF0BC /* ContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentCell.xib; sourceTree = "<group>"; };
 		2676D3A129949BCC005EBC02 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		2676D3A329949BDE005EBC02 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
-		269AB6312994CC9300401D12 /* ToolBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarCell.swift; sourceTree = "<group>"; };
-		269AB6322994CC9300401D12 /* CanvasCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasCell.swift; sourceTree = "<group>"; };
 		269AB6332994CC9300401D12 /* CanvasCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CanvasCell.xib; sourceTree = "<group>"; };
 		269AB6342994CC9300401D12 /* ToolBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolBarCell.xib; sourceTree = "<group>"; };
+		269AB63B2995388C00401D12 /* CanvasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasVC.swift; sourceTree = "<group>"; };
 		26CB6A242991F07D0032A6FF /* AIdeaSkfetch-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AIdeaSkfetch-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26CB6A272991F07D0032A6FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26CB6A292991F07D0032A6FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,11 +90,9 @@
 		2674B5BB299299A5004BD9BA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				269AB6322994CC9300401D12 /* CanvasCell.swift */,
 				2633B71B299368C900BDF0BC /* ContentCell.swift */,
 				26D0E7D82994A8D6008A603D /* FolderCell.swift */,
 				26D0E7D22994A57A008A603D /* ModifyingCell.swift */,
-				269AB6312994CC9300401D12 /* ToolBarCell.swift */,
 				2676D3A129949BCC005EBC02 /* UserCell.swift */,
 				269AB6332994CC9300401D12 /* CanvasCell.xib */,
 				2633B71D299368D500BDF0BC /* ContentCell.xib */,
@@ -131,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				26CB6A2B2991F07D0032A6FF /* MainVC.swift */,
-				2620E96D29938D6E00311B54 /* CanvasVC.swift */,
+				269AB63B2995388C00401D12 /* CanvasVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -246,13 +240,11 @@
 				26D0E7D32994A57A008A603D /* ModifyingCell.swift in Sources */,
 				26D0E7DB2994B638008A603D /* userData.swift in Sources */,
 				26CB6A2C2991F07D0032A6FF /* MainVC.swift in Sources */,
-				269AB6362994CC9300401D12 /* CanvasCell.swift in Sources */,
+				269AB63C2995388C00401D12 /* CanvasVC.swift in Sources */,
 				26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */,
-				2620E96E29938D6E00311B54 /* CanvasVC.swift in Sources */,
 				26CB6A2A2991F07D0032A6FF /* SceneDelegate.swift in Sources */,
 				2676D3A229949BCC005EBC02 /* UserCell.swift in Sources */,
 				26D0E7D92994A8D6008A603D /* FolderCell.swift in Sources */,
-				269AB6352994CC9300401D12 /* ToolBarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

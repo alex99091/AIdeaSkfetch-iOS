@@ -14,10 +14,13 @@ class MainVC: UIViewController {
     
     // MARK: - Property
     // let dataSource = userData()
+    // override var navController: NavController = NavController()
     
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //setupNavBar()
+        // view.backgroundColor = .systemCyan
         /// MainVC - Cell등록
         self.mainCollectionView.register(UserCell.uiNib, forCellWithReuseIdentifier: UserCell.reuseIdentifier)
         self.mainCollectionView.register(ModifyingCell.uiNib, forCellWithReuseIdentifier: ModifyingCell.reuseIdentifier)
@@ -28,15 +31,29 @@ class MainVC: UIViewController {
     }
     
     // MARK: - Method
-    /// IBAction func: section 1에 있는 modifyingCell + 버튼을 눌렀을때
-    /// modal present를 하고 거기에 입력된 정보를 바탕으로 section2에 폴더 생성
+    /// NavigationBar Style
+    /// : 사용자명, 이메일, pernson.fill 아이콘
+    fileprivate func setupNavBar() {
+        let titleView = UIView()
+        titleView.backgroundColor = . yellow
+        let maxWidth = view.frame.width
+        let maxHeight = CGFloat(60)
+        let firstFrame = CGRect(x: 0, y: 0, width: maxWidth, height: maxHeight/2)
+        let firstLabel = UILabel(frame: firstFrame)
+        firstLabel.text = "사용자"
+        let secondFrame = CGRect(x: 0, y: maxWidth/2, width: maxWidth, height: maxHeight/2)
+        let secondLabel = UILabel(frame: secondFrame)
+        secondLabel.text = "사용자@email.com"
+        titleView.addSubview(firstLabel)
+        titleView.addSubview(secondLabel)
+        navigationItem.titleView = titleView
+    }
     
     /// contentVC에 셀 이미지를 클릭하면 canvas View로 넘어가는 function
     @IBAction func nextVC() {
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: CanvasVC.identifier) as? CanvasVC else { return }
-        nextVC.modalTransitionStyle = .coverVertical
-        nextVC.modalPresentationStyle = .fullScreen
-        self.present(nextVC, animated: true, completion: nil)
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: CanvasVC.identifier)
+        else { return }
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
