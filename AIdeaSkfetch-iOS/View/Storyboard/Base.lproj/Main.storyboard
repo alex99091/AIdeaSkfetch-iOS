@@ -78,35 +78,64 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DfD-RX-kdW" userLabel="Draw Image">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fn-UF-6VQ">
-                                <rect key="frame" x="32" y="54" width="20" height="19"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fn-UF-6VQ" userLabel="BackButton">
+                                <rect key="frame" x="32" y="54" width="35" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="chevron.left.circle.fill" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
                                 <connections>
                                     <action selector="backVC:" destination="kGu-he-IDy" eventType="touchUpInside" id="Jzm-gv-jaS"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wih-XO-3Va" userLabel="SettingButton">
+                                <rect key="frame" x="77" y="54" width="35" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="pencil.circle.fill" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="settingButtonTabbed:" destination="kGu-he-IDy" eventType="touchUpInside" id="MCh-Kh-hJC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfI-4x-gNo" userLabel="SearchButton">
+                                <rect key="frame" x="122" y="54" width="35" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="magnifyingglass.circle.fill" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LZs-Hj-8r5"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="DfD-RX-kdW" secondAttribute="bottom" id="3Pm-4P-mBY"/>
+                            <constraint firstItem="tfI-4x-gNo" firstAttribute="top" secondItem="wih-XO-3Va" secondAttribute="top" id="3hV-o1-oOG"/>
+                            <constraint firstItem="tfI-4x-gNo" firstAttribute="leading" secondItem="wih-XO-3Va" secondAttribute="trailing" constant="10" id="5jU-mi-DpZ"/>
                             <constraint firstItem="DfD-RX-kdW" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="60V-Lj-Z8y"/>
                             <constraint firstItem="bT3-Ec-Vhb" firstAttribute="top" secondItem="okH-sd-hll" secondAttribute="top" id="BgC-72-kur"/>
                             <constraint firstItem="bT3-Ec-Vhb" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="JNs-BE-J31"/>
+                            <constraint firstItem="wih-XO-3Va" firstAttribute="top" secondItem="0Fn-UF-6VQ" secondAttribute="top" id="LkA-bJ-zOR"/>
                             <constraint firstItem="DfD-RX-kdW" firstAttribute="top" secondItem="okH-sd-hll" secondAttribute="top" id="OPt-YX-thy"/>
                             <constraint firstAttribute="trailing" secondItem="DfD-RX-kdW" secondAttribute="trailing" id="PM2-vA-2SO"/>
                             <constraint firstAttribute="bottom" secondItem="bT3-Ec-Vhb" secondAttribute="bottom" id="QQw-oW-UNh"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Fn-UF-6VQ" secondAttribute="trailing" constant="20" symbolic="YES" id="QlW-xm-6Iu"/>
+                            <constraint firstItem="wih-XO-3Va" firstAttribute="leading" secondItem="0Fn-UF-6VQ" secondAttribute="trailing" constant="10" id="T4Q-4z-o1b"/>
                             <constraint firstAttribute="trailing" secondItem="bT3-Ec-Vhb" secondAttribute="trailing" id="g6w-HM-Xpx"/>
                             <constraint firstItem="0Fn-UF-6VQ" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="10" id="lw4-bu-WPx"/>
                             <constraint firstItem="0Fn-UF-6VQ" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" constant="32" id="vb6-Nd-8Yh"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="canvasImage" destination="bT3-Ec-Vhb" id="tjP-eV-6a8"/>
                         <outlet property="drawImage" destination="DfD-RX-kdW" id="5i2-qc-Jqb"/>
@@ -116,11 +145,46 @@
             </objects>
             <point key="canvasLocation" x="2360.8695652173915" y="32.8125"/>
         </scene>
+        <!--SettingVC-->
+        <scene sceneID="xd8-S8-GIM">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wtl-f0-vCL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SettingVC" id="Hlb-yF-ptD" customClass="SettingVC" customModule="AIdeaSkfetch_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZjV-n4-eKP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpd-f0-AdG">
+                                <rect key="frame" x="82" y="328" width="250" height="250"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="0lR-An-SRz"/>
+                                    <constraint firstAttribute="height" constant="250" id="pDa-Pv-W4T"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CNP-XG-6m6"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rpd-f0-AdG" firstAttribute="centerY" secondItem="CNP-XG-6m6" secondAttribute="centerY" id="Q2h-DP-9pM"/>
+                            <constraint firstItem="rpd-f0-AdG" firstAttribute="centerX" secondItem="CNP-XG-6m6" secondAttribute="centerX" id="xSD-ZE-3NO"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3193" y="37"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

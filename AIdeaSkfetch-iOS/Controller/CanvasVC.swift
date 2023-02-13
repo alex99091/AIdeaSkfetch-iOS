@@ -12,14 +12,14 @@ class CanvasVC: UIViewController {
     // MARK: - Outlet
     @IBOutlet weak var canvasImage: UIImageView!
     @IBOutlet weak var drawImage: UIImageView!
- 
+    
     // MARK: - Property
     static let identifier = String(describing: CanvasVC.self)
     
     var lastPoint = CGPoint.zero
-    var color = UIColor.black
-    var brushWidth: CGFloat = 10.0
-    var opacity: CGFloat = 1.0
+    var color = UIColor.black // brush 의 색상 -> SettingVC에서 바꾸어야할것 1
+    var brushWidth: CGFloat = 10.0 // brush 두께 -> SettingVC에서 바꾸어야할것 2
+    var opacity: CGFloat = 1.0 // brush 의 opacity -> SettingVC에서 바꾸어야할것 3
     var swiped = false
     
     // MARK: - VC LifeCycle
@@ -81,10 +81,23 @@ class CanvasVC: UIViewController {
         
         drawImage.image = nil
     }
+    // 버튼 굵기를 변경하는 highlither popup 생성하는 func
+    //    private func setupThickPopItem() -> [PopoverItem]{
+    //
+    //    }
     
+    // 세팅버튼 터치하면 세팅화면으로 이동하는 function
+    @IBAction func settingButtonTabbed(_ sender: Any) {
+        print("settingButton Tabbed")
+        let modalVC = self.storyboard?.instantiateViewController(withIdentifier: SettingVC.identifier) as! SettingVC
+        modalVC.modalPresentationStyle = .popover
+        modalVC.modalTransitionStyle = .crossDissolve
+        
+        self.present(modalVC, animated: true, completion: nil)
+    }
     
+    // 상단에 backButton을 누르면 mainVc로 돌아가는 backVC function
     @IBAction func backVC(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
