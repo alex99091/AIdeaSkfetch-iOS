@@ -9,6 +9,10 @@ import UIKit
 import HGCircularSlider
 import FlexColorPicker
 
+protocol SettingVCDelegate: class {
+  func settingsVCFinished(_ settingVC: SettingVC)
+}
+
 class SettingVC: UIViewController {
     
     // MARK: - Outlet
@@ -23,8 +27,17 @@ class SettingVC: UIViewController {
     
     @IBOutlet weak var previewImage: UIImageView!
     
+    // MARK: - Delegate
+    weak var delegate: SettingVCDelegate?
+    
     // MARK: - Property
     static let identifier = String(describing: SettingVC.self)
+    
+    var brushValue: CGFloat = 10.0
+    var opacityValue: CGFloat = 1.0
+    var red: CGFloat = 0.0
+    var green: CGFloat = 0.0
+    var blue: CGFloat = 0.0
     
     var selectedColor: UIColor {
         get {
@@ -49,6 +62,7 @@ class SettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSliders()
+        drawPreview()
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,6 +72,7 @@ class SettingVC: UIViewController {
     
     // MARK: - Method
     @IBAction func heartButtonTab(_ sender: Any) {
+        delegate?.settingsVCFinished(self)
     }
     
     func setupSliders() {
@@ -81,16 +96,16 @@ class SettingVC: UIViewController {
     
     // MARK: - User Interaction methods
     @objc func updateBrush() {
-        var selectedBrush = Float(brushCircularSlider.endPointValue)
-        selectedBrush = (selectedBrush == 0 ? 50 : selectedBrush)
-        brushValueLabel.text = String(format: "%.1f", selectedBrush)
+        brushValue = brushCircularSlider.endPointValue
+        brushValue = brushValue == 0 ? 50 : brushValue
+        brushValueLabel.text = String(format: "%.1f", brushValue)
         drawPreview()
     }
     
     @objc func updateOpacity() {
-        var selectedOpacity = Float(opacityCircularSlider.endPointValue)
-        selectedOpacity = (selectedOpacity == 0 ? 1.0 : selectedOpacity)
-        opacityValueLabel.text = String(format: "%.2f", selectedOpacity)
+        opacityValue = opacityCircularSlider.endPointValue
+        opacityValue = opacityValue == 0 ? 1.0 : opacityValue
+        opacityValueLabel.text = String(format: "%.2f", opacityValue)
         drawPreview()
     }
     @objc func updateColors() {
@@ -129,14 +144,14 @@ class SettingVC: UIViewController {
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
-        let selectedBrush = Int(brushCircularSlider.endPointValue)
-        let selectedOpacity = Float(opacityCircularSlider.endPointValue)
+        brushValue = brushCircularSlider.endPointValue
+        opacityValue = opacityCircularSlider.endPointValue
         let color = selectedColor
         let rgb = hexStringToRGB(hex: color.hexValue())
         
         context.setLineCap(.round)
-        context.setLineWidth(CGFloat(selectedBrush))
-        context.setStrokeColor(UIColor(red: rgb[0], green: rgb[1], blue: rgb[2], alpha: CGFloat(selectedOpacity)).cgColor)
+        context.setLineWidth(brushValue)
+        context.setStrokeColor(UIColor(red: rgb[0], green: rgb[1], blue: rgb[2], alpha: opacityValue).cgColor)
         context.move(to: CGPoint(x: 45, y: 45))
         context.addLine(to: CGPoint(x: 45, y: 45))
         context.strokePath()
