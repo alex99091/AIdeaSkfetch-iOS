@@ -148,10 +148,12 @@ class SettingVC: UIViewController {
         opacityValue = opacityCircularSlider.endPointValue
         let color = selectedColor
         let rgb = hexStringToRGB(hex: color.hexValue())
-        
+        red = rgb[0]
+        green = rgb[1]
+        blue = rgb[2]
         context.setLineCap(.round)
         context.setLineWidth(brushValue)
-        context.setStrokeColor(UIColor(red: rgb[0], green: rgb[1], blue: rgb[2], alpha: opacityValue).cgColor)
+        context.setStrokeColor(UIColor(red: red, green: green, blue: blue, alpha: opacityValue).cgColor)
         context.move(to: CGPoint(x: 45, y: 45))
         context.addLine(to: CGPoint(x: 45, y: 45))
         context.strokePath()

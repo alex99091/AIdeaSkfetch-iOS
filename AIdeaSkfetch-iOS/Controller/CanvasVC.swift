@@ -81,23 +81,49 @@ class CanvasVC: UIViewController {
         
         drawImage.image = nil
     }
-    // 버튼 굵기를 변경하는 highlither popup 생성하는 func
-    //    private func setupThickPopItem() -> [PopoverItem]{
-    //
-    //    }
     
     // 세팅버튼 터치하면 세팅화면으로 이동하는 function
     @IBAction func settingButtonTabbed(_ sender: Any) {
         print("settingButton Tabbed")
-        let modalVC = self.storyboard?.instantiateViewController(withIdentifier: SettingVC.identifier) as! SettingVC
-        modalVC.modalPresentationStyle = .overFullScreen
-        modalVC.modalTransitionStyle = .crossDissolve
+        let settingVC = self.storyboard?.instantiateViewController(withIdentifier: SettingVC.identifier) as! SettingVC
+        // 세팅VC의 값 가져오기
+        settingVC.delegate = self
+        settingVC.brushValue = brushWidth
+        settingVC.opacityValue = opacity
         
-        self.present(modalVC, animated: true, completion: nil)
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
+        settingVC.red = red
+        settingVC.green = green
+        settingVC.blue = blue
+        
+        settingVC.modalPresentationStyle = .overFullScreen
+        settingVC.modalTransitionStyle = .crossDissolve
+        
+        self.present(settingVC, animated: true, completion: nil)
     }
+    
+    // Search 버튼 누르면 API이미지 가져오는 버튼
+    
     
     // 상단에 backButton을 누르면 mainVc로 돌아가는 backVC function
     @IBAction func backVC(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - SettingVCDelegate
+// settingVC에서 선택한 값 가져오기
+extension CanvasVC: SettingVCDelegate {
+    func settingsVCFinished(_ settingVC: SettingVC) {
+        brushWidth = settingVC.brushValue
+        opacity = settingVC.opacityValue
+        color = UIColor(red: settingVC.red,
+                        green: settingVC.green,
+                        blue: settingVC.blue,
+                        alpha: opacity)
+        dismiss(animated: true)
     }
 }
