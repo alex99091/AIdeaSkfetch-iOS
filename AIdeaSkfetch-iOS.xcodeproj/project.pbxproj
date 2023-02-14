@@ -19,12 +19,14 @@
 		2676D3A429949BDE005EBC02 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2676D3A329949BDE005EBC02 /* UserCell.xib */; };
 		269AB6382994CC9300401D12 /* ToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269AB6342994CC9300401D12 /* ToolBarCell.xib */; };
 		269AB63C2995388C00401D12 /* CanvasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269AB63B2995388C00401D12 /* CanvasVC.swift */; };
+		26C37C5B299A103C002E356E /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 26C37C5A299A103C002E356E /* HGCircularSlider */; };
 		26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A272991F07D0032A6FF /* AppDelegate.swift */; };
 		26CB6A2A2991F07D0032A6FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A292991F07D0032A6FF /* SceneDelegate.swift */; };
 		26CB6A2C2991F07D0032A6FF /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A2B2991F07D0032A6FF /* MainVC.swift */; };
 		26CB6A2F2991F07D0032A6FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26CB6A2D2991F07D0032A6FF /* Main.storyboard */; };
 		26CB6A312991F07F0032A6FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26CB6A302991F07F0032A6FF /* Assets.xcassets */; };
 		26CB6A342991F07F0032A6FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26CB6A322991F07F0032A6FF /* LaunchScreen.storyboard */; };
+		26D04A86299A7BBA00F92E22 /* FlexColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 26D04A85299A7BBA00F92E22 /* FlexColorPicker */; };
 		26D0E7D32994A57A008A603D /* IntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7D22994A57A008A603D /* IntroCell.swift */; };
 		26D0E7D52994A58C008A603D /* IntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D0E7D42994A58B008A603D /* IntroCell.xib */; };
 		26D0E7D92994A8D6008A603D /* OperatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7D82994A8D6008A603D /* OperatingCell.swift */; };
@@ -63,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C37C5B299A103C002E356E /* HGCircularSlider in Frameworks */,
+				26D04A86299A7BBA00F92E22 /* FlexColorPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +215,10 @@
 			dependencies = (
 			);
 			name = "AIdeaSkfetch-iOS";
+			packageProductDependencies = (
+				26C37C5A299A103C002E356E /* HGCircularSlider */,
+				26D04A85299A7BBA00F92E22 /* FlexColorPicker */,
+			);
 			productName = "AIdeaSkfetch-iOS";
 			productReference = 26CB6A242991F07D0032A6FF /* AIdeaSkfetch-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +247,10 @@
 				Base,
 			);
 			mainGroup = 26CB6A1B2991F07D0032A6FF;
+			packageReferences = (
+				26C37C59299A103C002E356E /* XCRemoteSwiftPackageReference "HGCircularSlider" */,
+				26D04A84299A7BBA00F92E22 /* XCRemoteSwiftPackageReference "FlexColorPicker" */,
+			);
 			productRefGroup = 26CB6A252991F07D0032A6FF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -502,6 +514,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		26C37C59299A103C002E356E /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HamzaGhazouani/HGCircularSlider";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		26D04A84299A7BBA00F92E22 /* XCRemoteSwiftPackageReference "FlexColorPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RastislavMirek/FlexColorPicker";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26C37C5A299A103C002E356E /* HGCircularSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26C37C59299A103C002E356E /* XCRemoteSwiftPackageReference "HGCircularSlider" */;
+			productName = HGCircularSlider;
+		};
+		26D04A85299A7BBA00F92E22 /* FlexColorPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26D04A84299A7BBA00F92E22 /* XCRemoteSwiftPackageReference "FlexColorPicker" */;
+			productName = FlexColorPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 26CB6A1C2991F07D0032A6FF /* Project object */;
 }

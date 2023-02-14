@@ -90,7 +90,7 @@ class CanvasVC: UIViewController {
     @IBAction func settingButtonTabbed(_ sender: Any) {
         print("settingButton Tabbed")
         let modalVC = self.storyboard?.instantiateViewController(withIdentifier: SettingVC.identifier) as! SettingVC
-        modalVC.modalPresentationStyle = .popover
+        modalVC.modalPresentationStyle = .overFullScreen
         modalVC.modalTransitionStyle = .crossDissolve
         
         self.present(modalVC, animated: true, completion: nil)

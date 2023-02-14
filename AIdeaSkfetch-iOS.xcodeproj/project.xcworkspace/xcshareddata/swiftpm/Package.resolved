@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "flexcolorpicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RastislavMirek/FlexColorPicker",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6917729f3d7800c64a9903d97d1c2dd76d9c9085"
+      }
+    },
+    {
+      "identity" : "hgcircularslider",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/HamzaGhazouani/HGCircularSlider",
+      "state" : {
+        "branch" : "master",
+        "revision" : "2906c33e3101468a892f274c689ea0679f792037"
+      }
+    }
+  ],
+  "version" : 2
+}

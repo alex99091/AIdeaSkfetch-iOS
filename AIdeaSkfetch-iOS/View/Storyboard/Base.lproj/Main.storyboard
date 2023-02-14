@@ -146,45 +146,224 @@
             <point key="canvasLocation" x="2360.8695652173915" y="32.8125"/>
         </scene>
         <!--SettingVC-->
-        <scene sceneID="xd8-S8-GIM">
+        <scene sceneID="Tlm-1O-Yrt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wtl-f0-vCL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="SettingVC" id="Hlb-yF-ptD" customClass="SettingVC" customModule="AIdeaSkfetch_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZjV-n4-eKP">
+                <viewController storyboardIdentifier="SettingVC" id="qOC-Fg-bpo" customClass="SettingVC" customModule="AIdeaSkfetch_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GoH-vd-UHf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpd-f0-AdG">
-                                <rect key="frame" x="82" y="328" width="250" height="250"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="04t-cj-oxj" userLabel="Circular Stack View">
+                                <rect key="frame" x="20" y="64" width="374" height="177"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMe-0W-Iv9" customClass="CircularSlider" customModule="HGCircularSlider">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="177"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="LMe-0W-Iv9" secondAttribute="height" id="li7-0t-azg"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
+                                                <color key="value" red="0.87450980389999999" green="0.80000000000000004" blue="0.22352941179999999" alpha="0.79496228449999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endThumbTintColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8X-Dc-7m9" customClass="CircularSlider" customModule="HGCircularSlider">
+                                        <rect key="frame" x="197" y="0.0" width="177" height="177"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Q8X-Dc-7m9" secondAttribute="height" id="Cbr-cB-sfA"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
+                                                <color key="value" red="0.87450980389999999" green="0.80000000000000004" blue="0.22352941179999999" alpha="0.79496228449999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endThumbTintColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDx-33-XUb" customClass="RadialPaletteControl" customModule="FlexColorPicker">
+                                <rect key="frame" x="20" y="261" width="374" height="374"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="0lR-An-SRz"/>
-                                    <constraint firstAttribute="height" constant="250" id="pDa-Pv-W4T"/>
+                                    <constraint firstAttribute="width" secondItem="ZDx-33-XUb" secondAttribute="height" id="eMa-lm-5ye"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Tkh-yC-CT9" userLabel="Label Stack View">
+                                <rect key="frame" x="20" y="655" width="374" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-xI-JM5">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="80"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kFx-6N-VeW" userLabel="Brush Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="20"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scribble.variable" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t4e-zn-5kG">
+                                                        <rect key="frame" x="0.0" y="-0.5" width="83.5" height="19.5"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="10.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAT-Nd-wFo">
+                                                        <rect key="frame" x="83.5" y="0.0" width="83.5" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="FAT-Nd-wFo" firstAttribute="width" secondItem="t4e-zn-5kG" secondAttribute="width" id="mmD-VN-nBw"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JtI-BN-bZE" userLabel="Opacity Stack View">
+                                                <rect key="frame" x="0.0" y="30" width="167" height="20"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.and.outline" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TOq-Dg-8cw">
+                                                        <rect key="frame" x="0.0" y="-1" width="83.5" height="20.5"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xlj-Qd-ivx">
+                                                        <rect key="frame" x="83.5" y="0.0" width="83.5" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Xlj-Qd-ivx" firstAttribute="width" secondItem="TOq-Dg-8cw" secondAttribute="width" id="Lzg-qS-brG"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dUw-ZZ-XE7" userLabel="Color Stack View">
+                                                <rect key="frame" x="0.0" y="60" width="167" height="20"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paintpalette" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wjm-hf-uZC">
+                                                        <rect key="frame" x="0.0" y="0.5" width="83.5" height="19"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="#000000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkf-Pc-mJp">
+                                                        <rect key="frame" x="83.5" y="0.0" width="83.5" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="fkf-Pc-mJp" firstAttribute="width" secondItem="Wjm-hf-uZC" secondAttribute="width" id="DfV-1R-dby"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="kFx-6N-VeW" firstAttribute="width" secondItem="w1R-xI-JM5" secondAttribute="width" id="6dk-UV-FuH"/>
+                                            <constraint firstItem="JtI-BN-bZE" firstAttribute="width" secondItem="w1R-xI-JM5" secondAttribute="width" id="Ouc-zR-lZS"/>
+                                            <constraint firstItem="dUw-ZZ-XE7" firstAttribute="width" secondItem="w1R-xI-JM5" secondAttribute="width" id="dfI-ev-otW"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEO-nB-NyF" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
+                                        <rect key="frame" x="207" y="0.0" width="167" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="NZm-4s-ZGO"/>
+                                            <constraint firstAttribute="height" constant="80" id="T1J-4E-zxW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fEO-nB-NyF" firstAttribute="width" secondItem="w1R-xI-JM5" secondAttribute="width" id="sdv-gy-f5Z"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="CNP-XG-6m6"/>
+                        <viewLayoutGuide key="safeArea" id="jet-PR-KXE"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="rpd-f0-AdG" firstAttribute="centerY" secondItem="CNP-XG-6m6" secondAttribute="centerY" id="Q2h-DP-9pM"/>
-                            <constraint firstItem="rpd-f0-AdG" firstAttribute="centerX" secondItem="CNP-XG-6m6" secondAttribute="centerX" id="xSD-ZE-3NO"/>
+                            <constraint firstItem="jet-PR-KXE" firstAttribute="trailing" secondItem="04t-cj-oxj" secondAttribute="trailing" constant="20" id="972-pW-X7W"/>
+                            <constraint firstItem="Tkh-yC-CT9" firstAttribute="leading" secondItem="ZDx-33-XUb" secondAttribute="leading" id="Js3-sC-L76"/>
+                            <constraint firstItem="Tkh-yC-CT9" firstAttribute="top" secondItem="ZDx-33-XUb" secondAttribute="bottom" constant="20" id="Qf9-Gu-DJu"/>
+                            <constraint firstItem="ZDx-33-XUb" firstAttribute="top" secondItem="04t-cj-oxj" secondAttribute="bottom" constant="20" id="QfQ-3h-8dc"/>
+                            <constraint firstItem="Tkh-yC-CT9" firstAttribute="trailing" secondItem="ZDx-33-XUb" secondAttribute="trailing" id="UZP-EQ-26T"/>
+                            <constraint firstItem="ZDx-33-XUb" firstAttribute="trailing" secondItem="04t-cj-oxj" secondAttribute="trailing" id="X45-pZ-Yil"/>
+                            <constraint firstItem="04t-cj-oxj" firstAttribute="leading" secondItem="jet-PR-KXE" secondAttribute="leading" constant="20" id="hJi-eb-hOW"/>
+                            <constraint firstItem="ZDx-33-XUb" firstAttribute="leading" secondItem="04t-cj-oxj" secondAttribute="leading" id="nlL-0g-e85"/>
+                            <constraint firstItem="04t-cj-oxj" firstAttribute="top" secondItem="jet-PR-KXE" secondAttribute="top" constant="20" id="ziy-Tc-Bww"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="brushCircularSlider" destination="LMe-0W-Iv9" id="7WC-ju-HGL"/>
+                        <outlet property="brushValueLabel" destination="FAT-Nd-wFo" id="UuU-mI-WWu"/>
+                        <outlet property="colorPalletteSlider" destination="ZDx-33-XUb" id="l9M-Ni-lJg"/>
+                        <outlet property="hexValueLabel" destination="fkf-Pc-mJp" id="s6z-G6-elS"/>
+                        <outlet property="opacityCircularSlider" destination="Q8X-Dc-7m9" id="iOf-pj-czE"/>
+                        <outlet property="opacityValueLabel" destination="Xlj-Qd-ivx" id="05s-AX-VPv"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmh-nc-Gw4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3193" y="37"/>
+            <point key="canvasLocation" x="3161" y="33"/>
         </scene>
     </scenes>
     <resources>
         <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="paintpalette" catalog="system" width="128" height="105"/>
+        <image name="pencil.and.outline" catalog="system" width="128" height="128"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="scribble.variable" catalog="system" width="128" height="118"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
