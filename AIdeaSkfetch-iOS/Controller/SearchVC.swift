@@ -28,6 +28,7 @@ class SearchVC: UIViewController {
     
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
+        print("SearchView Loaded")
         super.viewDidLoad()
         setupView()
     }
@@ -39,7 +40,7 @@ class SearchVC: UIViewController {
         self.searchBar.searchTextField.addTarget(self, action: #selector(searchTermInput(_:)), for: .editingChanged)
         
         // prompt -> 위에 입력된 userInput 넣기
-        SearchAPI.searchSketch(prompt: "cat", n: 2, size: "512x512", completion: { result in
+        SearchAPI.searchSketch(prompt: "A cute baby sea otter sketch", n: 2, size: "1024x1024", completion: { result in
             switch result {
             case .success(let response):
                 if let imageUrls: [Datum] = response.data {
@@ -47,8 +48,9 @@ class SearchVC: UIViewController {
                         self.reloadInputViews()
                     }
                     // image 1, 2 에 각각  url로 링크 걸어주기
-                    for i in imageUrls {
-                        print(i)
+                    if imageUrls.count == 2 {
+                        self.firstImageView.load(url: URL(string: imageUrls[0].url!)!)
+                        self.secondImageView.load(url: URL(string: imageUrls[1].url!)!)
                     }
                 }
             case .failure(let failure):

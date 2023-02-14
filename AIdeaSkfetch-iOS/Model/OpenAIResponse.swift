@@ -27,3 +27,4 @@ struct BaseListResponse<T: Codable>: Codable {
 struct BaseResponse<T: Codable>: Codable {
     let url: T?
 }
+

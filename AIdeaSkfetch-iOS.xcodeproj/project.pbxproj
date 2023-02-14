@@ -21,7 +21,6 @@
 		269AB63C2995388C00401D12 /* CanvasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269AB63B2995388C00401D12 /* CanvasVC.swift */; };
 		26BF3705299BADD0001C04F6 /* OpenAIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BF3704299BADD0001C04F6 /* OpenAIResponse.swift */; };
 		26BF3708299BB248001C04F6 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BF3707299BB248001C04F6 /* SearchAPI.swift */; };
-		26BF370B299BBA9C001C04F6 /* MultipartForm in Frameworks */ = {isa = PBXBuildFile; productRef = 26BF370A299BBA9C001C04F6 /* MultipartForm */; };
 		26BF370D299BC083001C04F6 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BF370C299BC082001C04F6 /* SearchVC.swift */; };
 		26C37C5B299A103C002E356E /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 26C37C5A299A103C002E356E /* HGCircularSlider */; };
 		26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A272991F07D0032A6FF /* AppDelegate.swift */; };
@@ -73,7 +72,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				26C37C5B299A103C002E356E /* HGCircularSlider in Frameworks */,
-				26BF370B299BBA9C001C04F6 /* MultipartForm in Frameworks */,
 				26D04A86299A7BBA00F92E22 /* FlexColorPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,7 +235,6 @@
 			packageProductDependencies = (
 				26C37C5A299A103C002E356E /* HGCircularSlider */,
 				26D04A85299A7BBA00F92E22 /* FlexColorPicker */,
-				26BF370A299BBA9C001C04F6 /* MultipartForm */,
 			);
 			productName = "AIdeaSkfetch-iOS";
 			productReference = 26CB6A242991F07D0032A6FF /* AIdeaSkfetch-iOS.app */;
@@ -270,7 +267,6 @@
 			packageReferences = (
 				26C37C59299A103C002E356E /* XCRemoteSwiftPackageReference "HGCircularSlider" */,
 				26D04A84299A7BBA00F92E22 /* XCRemoteSwiftPackageReference "FlexColorPicker" */,
-				26BF3709299BBA9C001C04F6 /* XCRemoteSwiftPackageReference "MultipartForm" */,
 			);
 			productRefGroup = 26CB6A252991F07D0032A6FF /* Products */;
 			projectDirPath = "";
@@ -540,14 +536,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		26BF3709299BBA9C001C04F6 /* XCRemoteSwiftPackageReference "MultipartForm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/davbeck/MultipartForm";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		26C37C59299A103C002E356E /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HamzaGhazouani/HGCircularSlider";
@@ -567,11 +555,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		26BF370A299BBA9C001C04F6 /* MultipartForm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26BF3709299BBA9C001C04F6 /* XCRemoteSwiftPackageReference "MultipartForm" */;
-			productName = MultipartForm;
-		};
 		26C37C5A299A103C002E356E /* HGCircularSlider */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26C37C59299A103C002E356E /* XCRemoteSwiftPackageReference "HGCircularSlider" */;

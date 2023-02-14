@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MultipartForm
 
 enum SearchAPI {
     static let baseURL = "https://api.openai.com/v1/images/generations"
@@ -56,13 +55,10 @@ extension SearchAPI {
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("Bearer \(APIkey)", forHTTPHeaderField: "Authorization")
         
-        let form = MultipartForm(parts: [
-            MultipartForm.Part(name: "prompt", value: prompt + "sketch"),
-            MultipartForm.Part(name: "n", value: prompt),
-            MultipartForm.Part(name: "size", value: size)
-        ])
+        guard let bodyData = "{\"prompt\": \"\(prompt)\", \"n\": \(n), \"size\": \"\(size)\"}".data(using: .utf8)
+              else { return }
         
-        urlRequest.httpBody = form.bodyData
+        urlRequest.httpBody = bodyData
         
         URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
             

@@ -17,15 +17,6 @@
         "branch" : "master",
         "revision" : "2906c33e3101468a892f274c689ea0679f792037"
       }
-    },
-    {
-      "identity" : "multipartform",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/davbeck/MultipartForm",
-      "state" : {
-        "branch" : "master",
-        "revision" : "c91979ea956a360bf84f0cc480afbcc7c946c753"
-      }
     }
   ],
   "version" : 2
