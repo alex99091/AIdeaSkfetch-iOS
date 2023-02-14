@@ -380,8 +380,89 @@
             </objects>
             <point key="canvasLocation" x="3160.8695652173915" y="32.8125"/>
         </scene>
+        <!--SearchVC-->
+        <scene sceneID="VZu-xU-iRe">
+            <objects>
+                <viewController id="dN3-fS-kjL" customClass="SearchVC" customModule="AIdeaSkfetch_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m5E-Tz-RTn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6qw-cQ-Yes">
+                                <rect key="frame" x="50" y="144" width="314" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="li3-Tz-oxg" userLabel="ResultStackView">
+                                        <rect key="frame" x="5" y="148" width="304" height="147"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UNd-K6-OkC" userLabel="FirstImageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="147" height="147"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="UNd-K6-OkC" secondAttribute="height" id="802-ia-us4"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J2Q-zO-zNl" userLabel="SecondImageView">
+                                                <rect key="frame" x="157" y="0.0" width="147" height="147"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="J2Q-zO-zNl" secondAttribute="height" id="iPE-Xq-U5e"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <searchBar contentMode="redraw" text="Please enter your searchTerm" translatesAutoresizingMaskIntoConstraints="NO" id="tMe-2h-RCH">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2na-hT-ZIa"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OpenAILogo.svg" translatesAutoresizingMaskIntoConstraints="NO" id="NVx-9f-dmm" userLabel="IconImageView">
+                                        <rect key="frame" x="10" y="45" width="80" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="NVx-9f-dmm" secondAttribute="height" multiplier="4:1" id="CXP-xh-xmS"/>
+                                            <constraint firstAttribute="height" constant="20" id="ad0-pg-pMV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explanation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fho-ho-Oaf">
+                                        <rect key="frame" x="10" y="70" width="314" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemMintColor"/>
+                                <constraints>
+                                    <constraint firstItem="li3-Tz-oxg" firstAttribute="leading" secondItem="6qw-cQ-Yes" secondAttribute="leading" constant="5" id="4q0-9h-xwz"/>
+                                    <constraint firstItem="NVx-9f-dmm" firstAttribute="top" secondItem="tMe-2h-RCH" secondAttribute="bottom" constant="5" id="HUx-f4-ejj"/>
+                                    <constraint firstAttribute="trailing" secondItem="li3-Tz-oxg" secondAttribute="trailing" constant="5" id="Q6B-sF-Pgt"/>
+                                    <constraint firstAttribute="trailing" secondItem="tMe-2h-RCH" secondAttribute="trailing" id="TPD-3d-1G8"/>
+                                    <constraint firstAttribute="bottom" secondItem="li3-Tz-oxg" secondAttribute="bottom" constant="5" id="Zz2-9F-OiQ"/>
+                                    <constraint firstItem="Fho-ho-Oaf" firstAttribute="leading" secondItem="tMe-2h-RCH" secondAttribute="leading" constant="10" id="aqD-aM-KA8"/>
+                                    <constraint firstItem="NVx-9f-dmm" firstAttribute="leading" secondItem="tMe-2h-RCH" secondAttribute="leading" constant="10" id="cP2-Rb-acj"/>
+                                    <constraint firstItem="Fho-ho-Oaf" firstAttribute="trailing" secondItem="tMe-2h-RCH" secondAttribute="trailing" constant="10" id="eWZ-lW-w5N"/>
+                                    <constraint firstItem="tMe-2h-RCH" firstAttribute="leading" secondItem="6qw-cQ-Yes" secondAttribute="leading" id="f5F-ww-60z"/>
+                                    <constraint firstItem="Fho-ho-Oaf" firstAttribute="top" secondItem="NVx-9f-dmm" secondAttribute="bottom" constant="5" id="nCh-s6-Jz4"/>
+                                    <constraint firstAttribute="height" constant="300" id="pGO-LH-BhV"/>
+                                    <constraint firstItem="tMe-2h-RCH" firstAttribute="top" secondItem="6qw-cQ-Yes" secondAttribute="top" id="yIc-3L-B4a"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3kr-MG-6cg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6qw-cQ-Yes" firstAttribute="centerX" secondItem="3kr-MG-6cg" secondAttribute="centerX" id="5v1-FU-9ox"/>
+                            <constraint firstItem="6qw-cQ-Yes" firstAttribute="top" secondItem="3kr-MG-6cg" secondAttribute="top" constant="100" id="JjP-yr-R0H"/>
+                            <constraint firstItem="6qw-cQ-Yes" firstAttribute="leading" secondItem="3kr-MG-6cg" secondAttribute="leading" constant="50" id="YkB-hW-KwH"/>
+                            <constraint firstItem="3kr-MG-6cg" firstAttribute="trailing" secondItem="6qw-cQ-Yes" secondAttribute="trailing" constant="50" id="n8v-sj-wKd"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pLL-1e-FuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3915.9420289855075" y="28.794642857142854"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="OpenAILogo.svg" width="1600" height="394"/>
         <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
@@ -391,6 +472,9 @@
         <image name="scribble.variable" catalog="system" width="128" height="118"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

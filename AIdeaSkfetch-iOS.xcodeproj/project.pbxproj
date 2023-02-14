@@ -22,6 +22,7 @@
 		26BF3705299BADD0001C04F6 /* OpenAIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BF3704299BADD0001C04F6 /* OpenAIResponse.swift */; };
 		26BF3708299BB248001C04F6 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BF3707299BB248001C04F6 /* SearchAPI.swift */; };
 		26BF370B299BBA9C001C04F6 /* MultipartForm in Frameworks */ = {isa = PBXBuildFile; productRef = 26BF370A299BBA9C001C04F6 /* MultipartForm */; };
+		26BF370D299BC083001C04F6 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BF370C299BC082001C04F6 /* SearchVC.swift */; };
 		26C37C5B299A103C002E356E /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 26C37C5A299A103C002E356E /* HGCircularSlider */; };
 		26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A272991F07D0032A6FF /* AppDelegate.swift */; };
 		26CB6A2A2991F07D0032A6FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB6A292991F07D0032A6FF /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 		269AB63B2995388C00401D12 /* CanvasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasVC.swift; sourceTree = "<group>"; };
 		26BF3704299BADD0001C04F6 /* OpenAIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIResponse.swift; sourceTree = "<group>"; };
 		26BF3707299BB248001C04F6 /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
+		26BF370C299BC082001C04F6 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		26CB6A242991F07D0032A6FF /* AIdeaSkfetch-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AIdeaSkfetch-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26CB6A272991F07D0032A6FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26CB6A292991F07D0032A6FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				26CB6A2B2991F07D0032A6FF /* MainVC.swift */,
 				269AB63B2995388C00401D12 /* CanvasVC.swift */,
 				2661A2EE299869A800C1695E /* SettingVC.swift */,
+				26BF370C299BC082001C04F6 /* SearchVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				26BF3705299BADD0001C04F6 /* OpenAIResponse.swift in Sources */,
 				26D0E7DB2994B638008A603D /* userData.swift in Sources */,
 				26CB6A2C2991F07D0032A6FF /* MainVC.swift in Sources */,
+				26BF370D299BC083001C04F6 /* SearchVC.swift in Sources */,
 				269AB63C2995388C00401D12 /* CanvasVC.swift in Sources */,
 				26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */,
 				26BF3708299BB248001C04F6 /* SearchAPI.swift in Sources */,
