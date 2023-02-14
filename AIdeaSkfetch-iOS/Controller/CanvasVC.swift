@@ -105,7 +105,18 @@ class CanvasVC: UIViewController {
         self.present(settingVC, animated: true, completion: nil)
     }
     
-    // Search 버튼 누르면 API이미지 가져오는 버튼
+    // Search 버튼 누르면 search뷰로 이동하는 function
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        print("searchButton Tapped")
+        let searchVC = self.storyboard?.instantiateViewController(withIdentifier: SearchVC.identifier) as! SearchVC
+        
+        searchVC.modalPresentationStyle = .overCurrentContext
+        searchVC.providesPresentationContextTransitionStyle = true
+        searchVC.definesPresentationContext = true
+        searchVC.modalTransitionStyle = .crossDissolve
+        
+        self.present(searchVC, animated: true, completion: nil)
+    }
     
     
     // 상단에 backButton을 누르면 mainVc로 돌아가는 backVC function
