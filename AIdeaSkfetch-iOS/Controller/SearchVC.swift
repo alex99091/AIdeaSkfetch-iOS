@@ -8,6 +8,10 @@
 import UIKit
 import SwiftUI
 
+protocol SearchVCDelegate: class {
+  func searchVCFinished(_ searchVC: SearchVC)
+}
+
 class SearchVC: UIViewController {
     
     // MARK: - Outlet
@@ -16,12 +20,18 @@ class SearchVC: UIViewController {
     @IBOutlet weak var progressSlider: UIProgressView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
+    // MARK: - Delegate
+    weak var delegate: SearchVCDelegate?
+    
     // MARK: - Property
     static let identifier = String(describing: SearchVC.self)
     
     let regularCustomFont = "Sunflower-Light"
     
     var data: [Datum] = []
+    var fetchedImageUrlList: [Datum] = []
+    var fetchedImageUrl: String = ""
+    
     var searchTermDispatchWorkItem: DispatchWorkItem? = nil
     private var observation: NSKeyValueObservation?
     var searchTerm: String = ""
@@ -71,7 +81,7 @@ class SearchVC: UIViewController {
         let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { timer in
             value += 0.1
             self.progressSlider.setProgress(Float(value), animated: true)
-            if value > 12.0 {
+            if value > 15.0 {
                 timer.invalidate()
             }
         })
@@ -95,6 +105,7 @@ extension SearchVC: UICollectionViewDataSource {
                 switch result {
                 case .success(let response):
                     if let imageUrls: [Datum] = response.data {
+                        self.fetchedImageUrlList = imageUrls
                         DispatchQueue.main.async {
                             self.reloadInputViews()
                         }
@@ -139,8 +150,24 @@ extension SearchVC: UICollectionViewDelegateFlowLayout {
 }
 
 // Mark: - Cell이 선택되었을때 action
+extension SearchVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        for i in 0...3 {
+            if indexPath.row == i {
+                self.fetchedImageUrl = fetchedImageUrlList[i].url!
+                print("current: SearchVC, fetchedUrl = \(fetchedImageUrl)")
+                delegate?.searchVCFinished(self)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+}
 
 
+
+// url 링크 -> UIImage fetch
 extension UIImageView {
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in

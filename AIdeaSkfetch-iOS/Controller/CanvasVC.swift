@@ -17,10 +17,13 @@ class CanvasVC: UIViewController {
     static let identifier = String(describing: CanvasVC.self)
     
     var lastPoint = CGPoint.zero
-    var color = UIColor.black // brush 의 색상 -> SettingVC에서 바꾸어야할것 1
-    var brushWidth: CGFloat = 10.0 // brush 두께 -> SettingVC에서 바꾸어야할것 2
-    var opacity: CGFloat = 1.0 // brush 의 opacity -> SettingVC에서 바꾸어야할것 3
+    // default value
+    var color = UIColor.black
+    var brushWidth: CGFloat = 10.0
+    var opacity: CGFloat = 1.0
     var swiped = false
+    
+    var fetchedImageUrl: String = ""
     
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
@@ -109,6 +112,8 @@ class CanvasVC: UIViewController {
     @IBAction func searchButtonTapped(_ sender: Any) {
         print("searchButton Tapped")
         let searchVC = self.storyboard?.instantiateViewController(withIdentifier: SearchVC.identifier) as! SearchVC
+        searchVC.delegate = self
+        searchVC.fetchedImageUrl = fetchedImageUrl
         
         searchVC.modalPresentationStyle = .overCurrentContext
         searchVC.providesPresentationContextTransitionStyle = true
@@ -135,6 +140,15 @@ extension CanvasVC: SettingVCDelegate {
                         green: settingVC.green,
                         blue: settingVC.blue,
                         alpha: opacity)
+        dismiss(animated: true)
+    }
+}
+
+// MARK: - SearchVCDelegate
+// settingVC에서 선택한 값 가져오기
+extension CanvasVC: SearchVCDelegate {
+    func searchVCFinished(_ searchVC: SearchVC) {
+        fetchedImageUrl = searchVC.fetchedImageUrl
         dismiss(animated: true)
     }
 }
