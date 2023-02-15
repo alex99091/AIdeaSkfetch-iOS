@@ -9,12 +9,12 @@ import UIKit
 import SwiftUI
 
 class SearchVC: UIViewController {
- 
+    
     // MARK: - Outlet
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var firstImageView: UIImageView!
     @IBOutlet weak var explainLabel: UILabel!
-    @IBOutlet weak var secondImageView: UIImageView!
+    @IBOutlet weak var progressSlider: UIProgressView!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     
     // MARK: - Property
     static let identifier = String(describing: SearchVC.self)
@@ -22,15 +22,19 @@ class SearchVC: UIViewController {
     let regularCustomFont = "Sunflower-Light"
     
     var data: [Datum] = []
-    
     var searchTermDispatchWorkItem: DispatchWorkItem? = nil
-    var userInput = ""
+    private var observation: NSKeyValueObservation?
+    var searchTerm: String = ""
+    var userInputStatus: Bool = false
     
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         print("SearchView Loaded")
         super.viewDidLoad()
+        self.imageCollectionView.dataSource = self
+        self.imageCollectionView.delegate = self
         setupView()
+        reloadInputViews()
     }
     
     // MARK: - Method
@@ -38,28 +42,7 @@ class SearchVC: UIViewController {
         explainLabel.text = "If you entered search-term, you would get two Images below. Tap what you prefer to use"
         explainLabel.font = UIFont(name: regularCustomFont, size: 12.0)
         self.searchBar.searchTextField.addTarget(self, action: #selector(searchTermInput(_:)), for: .editingChanged)
-        
-        // prompt -> 위에 입력된 userInput 넣기
-        SearchAPI.searchSketch(prompt: "A cute baby sea otter sketch", n: 2, size: "1024x1024", completion: { result in
-            switch result {
-            case .success(let response):
-                if let imageUrls: [Datum] = response.data {
-                    DispatchQueue.main.async {
-                        self.reloadInputViews()
-                    }
-                    // image 1, 2 에 각각  url로 링크 걸어주기
-                    if imageUrls.count == 2 {
-                        self.firstImageView.load(url: URL(string: imageUrls[0].url!)!)
-                        self.secondImageView.load(url: URL(string: imageUrls[1].url!)!)
-                    }
-                }
-            case .failure(let failure):
-                print("failure: \(failure)")
-            }
-            
-        })
     }
-    
     // MARK: - User Interaction methods
     // 검색어 입력
     @objc func searchTermInput(_ sender: UITextField) {
@@ -67,16 +50,96 @@ class SearchVC: UIViewController {
         
         let dispatchWorkItem = DispatchWorkItem(block: {
             DispatchQueue.global(qos: .userInteractive).async {
-                DispatchQueue.main.async{
-                    self.userInput = sender.text ?? ""
+                DispatchQueue.main.async { [weak self] in
+                    guard let userInput = sender.text,
+                          let self = self else { return }
+                    print(#fileID, #function, #line)
+                    self.searchTerm = userInput
+                    self.userInputStatus = true
+                    self.progressCheck()
+                    self.imageCollectionView.reloadData()
                 }
             }
         })
         self.searchTermDispatchWorkItem = dispatchWorkItem
         
-        DispatchQueue.main.asyncAfter(deadline: .now(), execute: dispatchWorkItem)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: dispatchWorkItem)
+    }
+    // progressbar 설정하기 -> refactoring 필요 download 함수 호출되면 속도에 맞추어 지금은 평균시간으로 계산함
+    func progressCheck() {
+        var value = 0.0
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { timer in
+            value += 0.1
+            self.progressSlider.setProgress(Float(value), animated: true)
+            if value > 12.0 {
+                timer.invalidate()
+            }
+        })
     }
 }
+
+extension SearchVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.reuseIdentifier, for: indexPath) as! ImageCell
+        
+        if userInputStatus == true {
+            SearchAPI.searchSketch(prompt: searchTerm + "colored sketch",
+                                   n: 4,
+                                   size: "1024x1024",
+                                   completion: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let response):
+                    if let imageUrls: [Datum] = response.data {
+                        DispatchQueue.main.async {
+                            self.reloadInputViews()
+                        }
+                        for i in 0...3 {
+                            if indexPath.row == i{
+                                cell.imageCellContentImage.load(url: URL(string: imageUrls[i].url!)!)
+                                print(imageUrls[i])
+                            }
+                        }
+                    }
+                    
+                case .failure(let failure):
+                    print("failure: \(failure)")
+                }
+            })
+        } else if userInputStatus == false {
+            for i in 0...3 {
+                if indexPath.row == i{
+                    cell.imageCellContentImage.image = UIImage(named: "blankImage")
+                }
+            }
+        }
+        //cell.backgroundColor = .black
+        return cell
+    }
+}
+
+// MARK: - Cell Layout
+extension SearchVC: UICollectionViewDelegateFlowLayout {
+    
+    // 셀 높이, 사이즈
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = imageCollectionView.frame.width * 0.45
+        return CGSize(width: width, height: width)
+    }
+    // 셀 섹션 간격 inset
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let verticalInset = self.view.frame.width * 0.025
+        let horizontalInset = self.view.frame.width * 0.05/3
+        return UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
+    }
+}
+
+// Mark: - Cell이 선택되었을때 action
+
 
 extension UIImageView {
     func load(url: URL) {

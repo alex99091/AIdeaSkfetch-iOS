@@ -55,7 +55,7 @@ extension SearchAPI {
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("Bearer \(APIkey)", forHTTPHeaderField: "Authorization")
         
-        guard let bodyData = "{\"prompt\": \"\(prompt)\", \"n\": \(n), \"size\": \"\(size)\"}".data(using: .utf8)
+        guard let bodyData = "{\"prompt\": \"\(prompt) sketch with white background\", \"n\": \(n), \"size\": \"\(size)\"}".data(using: .utf8)
               else { return }
         
         urlRequest.httpBody = bodyData

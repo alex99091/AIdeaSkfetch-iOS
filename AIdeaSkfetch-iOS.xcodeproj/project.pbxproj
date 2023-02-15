@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2600D66A299CF10400EB403F /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600D669299CF10400EB403F /* ImageCell.swift */; };
 		2633B71C299368C900BDF0BC /* CanvasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2633B71B299368C900BDF0BC /* CanvasCell.swift */; };
 		2633B71E299368D500BDF0BC /* CanvasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2633B71D299368D500BDF0BC /* CanvasCell.xib */; };
 		2661A2EF299869A800C1695E /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661A2EE299869A800C1695E /* SettingVC.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2600D669299CF10400EB403F /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		2633B71B299368C900BDF0BC /* CanvasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasCell.swift; sourceTree = "<group>"; };
 		2633B71D299368D500BDF0BC /* CanvasCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CanvasCell.xib; sourceTree = "<group>"; };
 		2661A2EE299869A800C1695E /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
@@ -105,14 +107,6 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		2661A2E7299764AE00C1695E /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				2674B5BB299299A5004BD9BA /* Cell */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		26646D5529962D0E0089F7F0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +128,7 @@
 		2674B5BB299299A5004BD9BA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				2600D669299CF10400EB403F /* ImageCell.swift */,
 				2633B71B299368C900BDF0BC /* CanvasCell.swift */,
 				26D0E7D82994A8D6008A603D /* OperatingCell.swift */,
 				26D0E7D22994A57A008A603D /* IntroCell.swift */,
@@ -168,7 +163,7 @@
 		26CA614A29936617004216D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2661A2E7299764AE00C1695E /* Main */,
+				2674B5BB299299A5004BD9BA /* Cell */,
 				260DF032299215D300E88586 /* Storyboard */,
 			);
 			path = View;
@@ -317,6 +312,7 @@
 				26CB6A2A2991F07D0032A6FF /* SceneDelegate.swift in Sources */,
 				2676D3A229949BCC005EBC02 /* UserCell.swift in Sources */,
 				26D0E7D92994A8D6008A603D /* OperatingCell.swift in Sources */,
+				2600D66A299CF10400EB403F /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
