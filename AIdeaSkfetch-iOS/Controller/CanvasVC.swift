@@ -12,6 +12,7 @@ class CanvasVC: UIViewController {
     // MARK: - Outlet
     @IBOutlet weak var canvasImage: UIImageView!
     @IBOutlet weak var drawImage: UIImageView!
+    @IBOutlet weak var fetchedImage: UIImageView!
     
     // MARK: - Property
     static let identifier = String(describing: CanvasVC.self)
@@ -22,6 +23,7 @@ class CanvasVC: UIViewController {
     var brushWidth: CGFloat = 10.0
     var opacity: CGFloat = 1.0
     var swiped = false
+    var dataFetched = false
     
     var fetchedImageUrl: String = ""
     
@@ -75,7 +77,7 @@ class CanvasVC: UIViewController {
         if !swiped {
             drawSketch(from: lastPoint, to: lastPoint)
         }
-        // 터치가 끝나면 drawImage를 canvas에 합치고 darwImage를 nil로 리터
+        // 터치가 끝나면 drawImage를 canvas에 합치고 darwImage를 nil로 리턴
         UIGraphicsBeginImageContext(canvasImage.frame.size)
         canvasImage.image?.draw(in: view.bounds, blendMode: .normal, alpha: 1.0)
         drawImage?.image?.draw(in: view.bounds, blendMode: .normal, alpha: opacity)
@@ -84,6 +86,23 @@ class CanvasVC: UIViewController {
         
         drawImage.image = nil
     }
+    
+    // 이미지를 선택하면 이미지를 canvas에 옮기는 이벤트
+    func fetchImageToCanvas() {
+        
+        UIGraphicsBeginImageContext(canvasImage.frame.size)
+        canvasImage.image?.draw(in: view.bounds, blendMode: .normal, alpha: 1.0)
+        fetchedImage.load(url: URL(string: fetchedImageUrl)!)
+        fetchedImage?.image?.draw(in: view.bounds, blendMode: .normal, alpha: opacity)
+        canvasImage.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        fetchedImage.image = nil
+        dataFetched = false
+        // ImageView : View Hiearchy 조정
+        // self.fetchImage.sendSubViewToBack(self.mainImage)
+    }
+    
     
     // 세팅버튼 터치하면 세팅화면으로 이동하는 function
     @IBAction func settingButtonTabbed(_ sender: Any) {
@@ -149,6 +168,10 @@ extension CanvasVC: SettingVCDelegate {
 extension CanvasVC: SearchVCDelegate {
     func searchVCFinished(_ searchVC: SearchVC) {
         fetchedImageUrl = searchVC.fetchedImageUrl
+        self.dataFetched = true
+        print("current: CanvasVC, fetchedImageUrl: \(fetchedImageUrl), status: \(dataFetched)")
+        self.fetchImageToCanvas()
         dismiss(animated: true)
     }
 }
+

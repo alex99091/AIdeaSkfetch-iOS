@@ -79,9 +79,9 @@ class SearchVC: UIViewController {
     func progressCheck() {
         var value = 0.0
         let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { timer in
-            value += 0.1
+            value += 0.075
             self.progressSlider.setProgress(Float(value), animated: true)
-            if value > 15.0 {
+            if value > 20.0 {
                 timer.invalidate()
             }
         })
@@ -112,7 +112,6 @@ extension SearchVC: UICollectionViewDataSource {
                         for i in 0...3 {
                             if indexPath.row == i{
                                 cell.imageCellContentImage.load(url: URL(string: imageUrls[i].url!)!)
-                                print(imageUrls[i])
                             }
                         }
                     }
