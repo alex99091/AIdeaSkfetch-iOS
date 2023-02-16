@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xLW-0s-Qrb" userLabel="Fetched Image">
-                                <rect key="frame" x="80" y="144" width="254" height="254"/>
+                                <rect key="frame" x="80" y="194" width="254" height="254"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xLW-0s-Qrb" secondAttribute="height" multiplier="1:1" id="gas-hf-FDO"/>
                                 </constraints>
@@ -86,10 +86,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fn-UF-6VQ" userLabel="BackButton">
-                                <rect key="frame" x="32" y="54" width="35" height="34"/>
+                                <rect key="frame" x="25" y="54" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0Fn-UF-6VQ" secondAttribute="height" multiplier="1:1" id="3jn-wc-1Ve"/>
+                                    <constraint firstAttribute="width" constant="35" id="8uD-dU-7Fh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="chevron.left.circle.fill" catalog="system">
+                                <color key="tintColor" red="0.12549019607843137" green="0.62745098039215685" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="rectangle.grid.2x2" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
@@ -98,61 +102,160 @@
                                     <action selector="backVC:" destination="kGu-he-IDy" eventType="touchUpInside" id="Jzm-gv-jaS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wih-XO-3Va" userLabel="SettingButton">
-                                <rect key="frame" x="77" y="54" width="35" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgY-Q7-a9p" userLabel="TrayButton">
+                                <rect key="frame" x="304" y="54" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Jil-d0-IaI"/>
+                                    <constraint firstAttribute="width" secondItem="RgY-Q7-a9p" secondAttribute="height" multiplier="1:1" id="taD-sx-yg9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="pencil.circle.fill" catalog="system">
+                                <color key="tintColor" red="0.12549019610000001" green="0.62745098040000002" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="tray" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
                                 <connections>
-                                    <action selector="settingButtonTabbed:" destination="kGu-he-IDy" eventType="touchUpInside" id="NM8-ry-CSl"/>
+                                    <action selector="trayButtonTapped:" destination="kGu-he-IDy" eventType="touchUpInside" id="zms-W7-7q0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfI-4x-gNo" userLabel="SearchButton">
-                                <rect key="frame" x="122" y="54" width="35" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDF-Ga-j0G" userLabel="MoreButton">
+                                <rect key="frame" x="354" y="54" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="EwX-ve-qt1"/>
+                                    <constraint firstAttribute="width" secondItem="HDF-Ga-j0G" secondAttribute="height" multiplier="1:1" id="dv7-Fn-9U1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="magnifyingglass.circle.fill" catalog="system">
+                                <color key="tintColor" red="0.12549019610000001" green="0.62745098040000002" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="line.3.horizontal" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
-                                <connections>
-                                    <action selector="searchButtonTapped:" destination="kGu-he-IDy" eventType="touchUpInside" id="oRa-j8-Ejd"/>
-                                </connections>
                             </button>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="MZN-TF-wYY" userLabel="Revise Stack View">
+                                <rect key="frame" x="25" y="104" width="364" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nw2-Sj-AnU" userLabel="SettingButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="8uD-mr-xRM"/>
+                                            <constraint firstAttribute="width" secondItem="Nw2-Sj-AnU" secondAttribute="height" multiplier="1:1" id="xfl-s6-M1z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" red="0.50196078431372548" green="0.77647058823529413" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="highlighter" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="settingButtonTabbed:" destination="kGu-he-IDy" eventType="touchUpInside" id="WVE-e7-agU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PY9-D2-Lfo" userLabel="EraserButton">
+                                        <rect key="frame" x="83.5" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="281-Mr-maq"/>
+                                            <constraint firstAttribute="width" secondItem="PY9-D2-Lfo" secondAttribute="height" multiplier="1:1" id="kMc-Rm-NEj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" red="0.50196078430000002" green="0.77647058820000003" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="eraser">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eraserButtonTapped:" destination="kGu-he-IDy" eventType="touchUpInside" id="oR0-SZ-EPh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewp-Pm-IKl" userLabel="UndoButton">
+                                        <rect key="frame" x="167" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ewp-Pm-IKl" secondAttribute="height" multiplier="1:1" id="ZGQ-b5-UAM"/>
+                                            <constraint firstAttribute="width" constant="30" id="cgC-tI-MF1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" red="0.50196078430000002" green="0.77647058820000003" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="arrow.counterclockwise" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR6-vi-LmG" userLabel="RedoButton">
+                                        <rect key="frame" x="250.5" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="6aY-nj-UEm"/>
+                                            <constraint firstAttribute="width" secondItem="kR6-vi-LmG" secondAttribute="height" multiplier="1:1" id="7fO-FC-K5h"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" red="0.50196078430000002" green="0.77647058820000003" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="arrow.clockwise" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcH-ZY-M41" userLabel="SearchButton">
+                                        <rect key="frame" x="334" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="0Bk-NZ-PVp"/>
+                                            <constraint firstAttribute="width" secondItem="KcH-ZY-M41" secondAttribute="height" multiplier="1:1" id="GJH-me-YM4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" red="0.50196078430000002" green="0.77647058820000003" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="magnifyingglass" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchButtonTapped:" destination="kGu-he-IDy" eventType="touchUpInside" id="lQS-gQ-mxG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LZs-Hj-8r5"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="DfD-RX-kdW" secondAttribute="bottom" id="3Pm-4P-mBY"/>
-                            <constraint firstItem="tfI-4x-gNo" firstAttribute="top" secondItem="wih-XO-3Va" secondAttribute="top" id="3hV-o1-oOG"/>
-                            <constraint firstItem="xLW-0s-Qrb" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="100" id="4BP-zH-pgN"/>
-                            <constraint firstItem="tfI-4x-gNo" firstAttribute="leading" secondItem="wih-XO-3Va" secondAttribute="trailing" constant="10" id="5jU-mi-DpZ"/>
+                            <constraint firstItem="xLW-0s-Qrb" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="150" id="4BP-zH-pgN"/>
                             <constraint firstItem="DfD-RX-kdW" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="60V-Lj-Z8y"/>
                             <constraint firstItem="xLW-0s-Qrb" firstAttribute="leading" secondItem="LZs-Hj-8r5" secondAttribute="leading" constant="80" id="8F6-lQ-310"/>
+                            <constraint firstItem="HDF-Ga-j0G" firstAttribute="leading" secondItem="RgY-Q7-a9p" secondAttribute="trailing" constant="15" id="8Su-fd-wuU"/>
+                            <constraint firstItem="LZs-Hj-8r5" firstAttribute="trailing" secondItem="HDF-Ga-j0G" secondAttribute="trailing" constant="25" id="Bcg-IK-kl1" userLabel="Safe Area.trailing = MoreButton.trailing + 25"/>
                             <constraint firstItem="bT3-Ec-Vhb" firstAttribute="top" secondItem="okH-sd-hll" secondAttribute="top" id="BgC-72-kur"/>
+                            <constraint firstItem="HDF-Ga-j0G" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="10" id="Bsl-MI-g4c"/>
                             <constraint firstItem="bT3-Ec-Vhb" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="JNs-BE-J31"/>
-                            <constraint firstItem="wih-XO-3Va" firstAttribute="top" secondItem="0Fn-UF-6VQ" secondAttribute="top" id="LkA-bJ-zOR"/>
+                            <constraint firstItem="MZN-TF-wYY" firstAttribute="leading" secondItem="0Fn-UF-6VQ" secondAttribute="leading" id="OFL-E9-Kmh"/>
                             <constraint firstItem="DfD-RX-kdW" firstAttribute="top" secondItem="okH-sd-hll" secondAttribute="top" id="OPt-YX-thy"/>
                             <constraint firstAttribute="trailing" secondItem="DfD-RX-kdW" secondAttribute="trailing" id="PM2-vA-2SO"/>
                             <constraint firstAttribute="bottom" secondItem="bT3-Ec-Vhb" secondAttribute="bottom" id="QQw-oW-UNh"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Fn-UF-6VQ" secondAttribute="trailing" constant="20" symbolic="YES" id="QlW-xm-6Iu"/>
-                            <constraint firstItem="wih-XO-3Va" firstAttribute="leading" secondItem="0Fn-UF-6VQ" secondAttribute="trailing" constant="10" id="T4Q-4z-o1b"/>
+                            <constraint firstItem="RgY-Q7-a9p" firstAttribute="bottom" secondItem="HDF-Ga-j0G" secondAttribute="bottom" id="THG-Jc-pEl"/>
                             <constraint firstAttribute="trailing" secondItem="bT3-Ec-Vhb" secondAttribute="trailing" id="g6w-HM-Xpx"/>
+                            <constraint firstItem="RgY-Q7-a9p" firstAttribute="top" secondItem="HDF-Ga-j0G" secondAttribute="top" id="gBo-oQ-5jc"/>
+                            <constraint firstItem="MZN-TF-wYY" firstAttribute="top" secondItem="0Fn-UF-6VQ" secondAttribute="bottom" constant="15" id="hON-jy-8se"/>
                             <constraint firstItem="LZs-Hj-8r5" firstAttribute="trailing" secondItem="xLW-0s-Qrb" secondAttribute="trailing" constant="80" id="hbe-ds-6fy"/>
                             <constraint firstItem="0Fn-UF-6VQ" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="10" id="lw4-bu-WPx"/>
-                            <constraint firstItem="0Fn-UF-6VQ" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" constant="32" id="vb6-Nd-8Yh"/>
+                            <constraint firstItem="MZN-TF-wYY" firstAttribute="trailing" secondItem="HDF-Ga-j0G" secondAttribute="trailing" id="pkO-M8-xb6"/>
+                            <constraint firstItem="0Fn-UF-6VQ" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" constant="25" id="vb6-Nd-8Yh" userLabel="BackButton.leading = leading + 25"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
                         <outlet property="canvasImage" destination="bT3-Ec-Vhb" id="tjP-eV-6a8"/>
                         <outlet property="drawImage" destination="DfD-RX-kdW" id="5i2-qc-Jqb"/>
+                        <outlet property="eraserButton" destination="PY9-D2-Lfo" id="O2q-YG-sOE"/>
                         <outlet property="fetchedImage" destination="xLW-0s-Qrb" id="vWs-Nu-nnC"/>
+                        <outlet property="redoButon" destination="kR6-vi-LmG" id="hxC-uU-SP7"/>
+                        <outlet property="reviseStackView" destination="MZN-TF-wYY" id="dNc-Y6-7aP"/>
+                        <outlet property="settingButton" destination="Nw2-Sj-AnU" id="iIN-Wd-ZmK"/>
+                        <outlet property="trayButton" destination="RgY-Q7-a9p" id="79M-ye-hm8"/>
+                        <outlet property="undoButton" destination="ewp-Pm-IKl" id="6GF-0f-D2y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPx-f8-baC" sceneMemberID="firstResponder"/>
@@ -360,7 +463,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jet-PR-KXE"/>
-                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <color key="backgroundColor" red="0.98431372549019602" green="0.72156862745098038" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LTx-MG-MAi" firstAttribute="top" secondItem="VK7-gT-FjH" secondAttribute="bottom" constant="10" id="2ea-Wa-2s0"/>
                             <constraint firstItem="QK8-GL-1FN" firstAttribute="centerX" secondItem="jet-PR-KXE" secondAttribute="centerX" id="4YL-bm-C3o"/>
@@ -515,21 +618,23 @@
     </scenes>
     <resources>
         <image name="OpenAILogo.svg" width="1600" height="394"/>
-        <image name="chevron.left.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
+        <image name="eraser" width="200" height="200"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="highlighter" catalog="system" width="128" height="119"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="paintpalette" catalog="system" width="128" height="105"/>
         <image name="pencil.and.outline" catalog="system" width="128" height="128"/>
-        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="rectangle.grid.2x2" catalog="system" width="128" height="99"/>
         <image name="scribble.variable" catalog="system" width="128" height="118"/>
+        <image name="tray" catalog="system" width="128" height="88"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

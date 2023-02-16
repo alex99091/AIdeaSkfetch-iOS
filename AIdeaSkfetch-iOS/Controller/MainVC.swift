@@ -50,7 +50,7 @@ class MainVC: UIViewController {
 extension MainVC: UICollectionViewDataSource {
     // 메인뷰 섹션 갯수
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        6
+        4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,14 +91,14 @@ extension MainVC: UICollectionViewDataSource {
             
             for i in 0..<canvasDatasource.data.count {
                 if indexPath.row == i {
-                    cell.canvasImage.image = canvasDatasource.data[i].canvasImage
+                    //cell.canvasImage.image = canvasDatasource.data[i].canvasImage
                     cell.canvasNameLabel.text = canvasDatasource.data[i].canvasName
                     cell.canvasNameLabel.font = UIFont(name: regularCustomFont, size: 12.0)
                     cell.canvasCreatedDate.text = canvasDatasource.data[i].createdDate
                     cell.canvasCreatedDate.font = UIFont(name: regularCustomFont, size: 10.0)
                 }
             }
-            
+            cell.backgroundColor = .gray
             return cell
         }
         
@@ -123,20 +123,29 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 40, height: 30)
         }
         if indexPath.section == 3 {
-            let width = self.view.frame.width/2 * 0.9
-            return CGSize(width: width, height: width)
+            let width = self.view.frame.width * 0.475
+            let height = self.view.frame.width * 0.5
+            return CGSize(width: width, height: height)
         }
         return CGSize(width: self.view.frame.width, height: self.view.frame.height)
     }
     // 셀 섹션 간격 inset
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        //        let inset = self.view.frame.width * 0.025
         let inset = CGFloat(0)
+        if section == 3 {
+            let verticalInset = self.view.frame.width * 0.025
+            let horizontalInset = self.view.frame.width * 0.05/3
+            return UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
+        }
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
     // 셀 높이 spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         // self.view.frame.width * 0.025
+        if section == 3 {
+            let spacing = self.view.frame.width * 0.025
+            return spacing
+        }
         return CGFloat(0)
     }
     // 셀 아이템 간격 spacing

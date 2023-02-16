@@ -14,17 +14,27 @@ class CanvasVC: UIViewController {
     @IBOutlet weak var drawImage: UIImageView!
     @IBOutlet weak var fetchedImage: UIImageView!
     
+    @IBOutlet weak var trayButton: UIButton!
+    @IBOutlet weak var eraserButton: UIButton!
+    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var undoButton: UIButton!
+    @IBOutlet weak var redoButon: UIButton!
+    @IBOutlet weak var reviseStackView: UIStackView!
+    
     // MARK: - Property
     static let identifier = String(describing: CanvasVC.self)
     
     var lastPoint = CGPoint.zero
-    // default value
     var color = UIColor.black
     var brushWidth: CGFloat = 10.0
     var opacity: CGFloat = 1.0
     var swiped = false
     var dataFetched = false
     
+    var drawCommand: [[String: Any]] = [[:]]
+    
+    let IconConfiguration = UIImage.SymbolConfiguration(pointSize: 35)
+    var tappedCount: Int = 0
     var fetchedImageUrl: String = ""
     
     // MARK: - VC LifeCycle
@@ -103,6 +113,23 @@ class CanvasVC: UIViewController {
         // self.fetchImage.sendSubViewToBack(self.mainImage)
     }
     
+    // 도구버튼이 탭되면 아래 도구모음을 보여주고, 색이 변하는 action
+    @IBAction func trayButtonTapped(_ sender: Any) {
+        print("trayButtonTapped")
+        tappedCount += 1
+        if tappedCount % 2 == 0 {
+            reviseStackView.isHidden = true
+            let image = UIImage(systemName: "tray", withConfiguration: IconConfiguration)
+                    trayButton.setImage(image, for: .normal)
+                    trayButton.tintColor = UIColor(rgb: 0x20A0D0)
+        } else {
+            let image = UIImage(systemName: "tray.and.arrow.down", withConfiguration: IconConfiguration)
+                   trayButton.setImage(image, for: .normal)
+                   trayButton.tintColor = UIColor(rgb: 0xFBB800)
+            reviseStackView.isHidden = false
+        }
+    }
+    
     
     // 세팅버튼 터치하면 세팅화면으로 이동하는 function
     @IBAction func settingButtonTabbed(_ sender: Any) {
@@ -127,6 +154,14 @@ class CanvasVC: UIViewController {
         self.present(settingVC, animated: true, completion: nil)
     }
     
+    // Eraser가 탭되면 지우개 선택되는 function
+    @IBAction func eraserButtonTapped(_ sender: Any) {
+        brushWidth = 10.0
+        opacity = 1.0
+        color = UIColor.white
+    }
+    
+    
     // Search 버튼 누르면 search뷰로 이동하는 function
     @IBAction func searchButtonTapped(_ sender: Any) {
         print("searchButton Tapped")
@@ -147,6 +182,7 @@ class CanvasVC: UIViewController {
     @IBAction func backVC(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }
 
 // MARK: - SettingVCDelegate
