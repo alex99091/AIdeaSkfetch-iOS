@@ -3,8 +3,10 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -119,22 +121,30 @@
                                     <action selector="trayButtonTapped:" destination="kGu-he-IDy" eventType="touchUpInside" id="zms-W7-7q0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDF-Ga-j0G" userLabel="MoreButton">
-                                <rect key="frame" x="354" y="54" width="35" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvs-jR-TUx" userLabel="MoreButton">
+                                <rect key="frame" x="359" y="54" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="EwX-ve-qt1"/>
-                                    <constraint firstAttribute="width" secondItem="HDF-Ga-j0G" secondAttribute="height" multiplier="1:1" id="dv7-Fn-9U1"/>
+                                    <constraint firstAttribute="width" secondItem="Dvs-jR-TUx" secondAttribute="height" multiplier="1:1" id="T8r-Cc-EVV"/>
+                                    <constraint firstAttribute="width" constant="35" id="ks9-EH-RzW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="tintColor" red="0.12549019610000001" green="0.62745098040000002" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="line.3.horizontal" catalog="system">
+                                <color key="tintColor" red="0.12549019610000001" green="0.62745098040000002" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <menu key="menu" id="zXL-DB-v4A">
+                                    <children>
+                                        <command title="Item 1" id="irl-VU-7ZM"/>
+                                        <command title="Item 2" id="40v-Ax-lV4"/>
+                                    </children>
+                                </menu>
+                                <state key="normal">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <imageReference key="image" image="ellipsis.circle" catalog="system" symbolScale="default"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
+                                <connections>
+                                    <action selector="moreButtonTapped:" destination="kGu-he-IDy" eventType="touchUpInside" id="7bW-mS-yZi"/>
+                                </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="MZN-TF-wYY" userLabel="Revise Stack View">
-                                <rect key="frame" x="25" y="104" width="364" height="30"/>
+                                <rect key="frame" x="25" y="104" width="369" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nw2-Sj-AnU" userLabel="SettingButton">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -154,7 +164,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PY9-D2-Lfo" userLabel="EraserButton">
-                                        <rect key="frame" x="83.5" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="85" y="0.0" width="30" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="281-Mr-maq"/>
@@ -172,7 +182,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewp-Pm-IKl" userLabel="UndoButton">
-                                        <rect key="frame" x="167" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="169.5" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ewp-Pm-IKl" secondAttribute="height" multiplier="1:1" id="ZGQ-b5-UAM"/>
                                             <constraint firstAttribute="width" constant="30" id="cgC-tI-MF1"/>
@@ -189,7 +199,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR6-vi-LmG" userLabel="RedoButton">
-                                        <rect key="frame" x="250.5" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="254.5" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="6aY-nj-UEm"/>
                                             <constraint firstAttribute="width" secondItem="kR6-vi-LmG" secondAttribute="height" multiplier="1:1" id="7fO-FC-K5h"/>
@@ -206,7 +216,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcH-ZY-M41" userLabel="SearchButton">
-                                        <rect key="frame" x="334" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="339" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="0Bk-NZ-PVp"/>
                                             <constraint firstAttribute="width" secondItem="KcH-ZY-M41" secondAttribute="height" multiplier="1:1" id="GJH-me-YM4"/>
@@ -231,23 +241,22 @@
                             <constraint firstAttribute="bottom" secondItem="DfD-RX-kdW" secondAttribute="bottom" id="3Pm-4P-mBY"/>
                             <constraint firstItem="xLW-0s-Qrb" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="200" id="4BP-zH-pgN"/>
                             <constraint firstItem="DfD-RX-kdW" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="60V-Lj-Z8y"/>
+                            <constraint firstItem="RgY-Q7-a9p" firstAttribute="top" secondItem="Dvs-jR-TUx" secondAttribute="top" id="67F-7c-1Hw"/>
                             <constraint firstItem="xLW-0s-Qrb" firstAttribute="leading" secondItem="LZs-Hj-8r5" secondAttribute="leading" constant="80" id="8F6-lQ-310"/>
-                            <constraint firstItem="HDF-Ga-j0G" firstAttribute="leading" secondItem="RgY-Q7-a9p" secondAttribute="trailing" constant="15" id="8Su-fd-wuU"/>
-                            <constraint firstItem="LZs-Hj-8r5" firstAttribute="trailing" secondItem="HDF-Ga-j0G" secondAttribute="trailing" constant="25" id="Bcg-IK-kl1" userLabel="Safe Area.trailing = MoreButton.trailing + 25"/>
                             <constraint firstItem="bT3-Ec-Vhb" firstAttribute="top" secondItem="okH-sd-hll" secondAttribute="top" id="BgC-72-kur"/>
-                            <constraint firstItem="HDF-Ga-j0G" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="10" id="Bsl-MI-g4c"/>
                             <constraint firstItem="bT3-Ec-Vhb" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="JNs-BE-J31"/>
                             <constraint firstItem="MZN-TF-wYY" firstAttribute="leading" secondItem="0Fn-UF-6VQ" secondAttribute="leading" id="OFL-E9-Kmh"/>
                             <constraint firstItem="DfD-RX-kdW" firstAttribute="top" secondItem="okH-sd-hll" secondAttribute="top" id="OPt-YX-thy"/>
                             <constraint firstAttribute="trailing" secondItem="DfD-RX-kdW" secondAttribute="trailing" id="PM2-vA-2SO"/>
                             <constraint firstAttribute="bottom" secondItem="bT3-Ec-Vhb" secondAttribute="bottom" id="QQw-oW-UNh"/>
-                            <constraint firstItem="RgY-Q7-a9p" firstAttribute="bottom" secondItem="HDF-Ga-j0G" secondAttribute="bottom" id="THG-Jc-pEl"/>
+                            <constraint firstItem="LZs-Hj-8r5" firstAttribute="trailing" secondItem="Dvs-jR-TUx" secondAttribute="trailing" constant="20" id="VRD-Hf-VMH"/>
+                            <constraint firstItem="Dvs-jR-TUx" firstAttribute="leading" secondItem="RgY-Q7-a9p" secondAttribute="trailing" constant="20" id="evK-s7-ncq"/>
+                            <constraint firstItem="Dvs-jR-TUx" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="10" id="g43-x6-5IY"/>
                             <constraint firstAttribute="trailing" secondItem="bT3-Ec-Vhb" secondAttribute="trailing" id="g6w-HM-Xpx"/>
-                            <constraint firstItem="RgY-Q7-a9p" firstAttribute="top" secondItem="HDF-Ga-j0G" secondAttribute="top" id="gBo-oQ-5jc"/>
                             <constraint firstItem="MZN-TF-wYY" firstAttribute="top" secondItem="0Fn-UF-6VQ" secondAttribute="bottom" constant="15" id="hON-jy-8se"/>
                             <constraint firstItem="LZs-Hj-8r5" firstAttribute="trailing" secondItem="xLW-0s-Qrb" secondAttribute="trailing" constant="80" id="hbe-ds-6fy"/>
                             <constraint firstItem="0Fn-UF-6VQ" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="10" id="lw4-bu-WPx"/>
-                            <constraint firstItem="MZN-TF-wYY" firstAttribute="trailing" secondItem="HDF-Ga-j0G" secondAttribute="trailing" id="pkO-M8-xb6"/>
+                            <constraint firstItem="MZN-TF-wYY" firstAttribute="trailing" secondItem="Dvs-jR-TUx" secondAttribute="trailing" id="ogZ-st-PJB"/>
                             <constraint firstItem="0Fn-UF-6VQ" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" constant="25" id="vb6-Nd-8Yh" userLabel="BackButton.leading = leading + 25"/>
                         </constraints>
                     </view>
@@ -257,6 +266,7 @@
                         <outlet property="drawImage" destination="DfD-RX-kdW" id="5i2-qc-Jqb"/>
                         <outlet property="eraserButton" destination="PY9-D2-Lfo" id="YAc-SO-rrn"/>
                         <outlet property="fetchedImage" destination="xLW-0s-Qrb" id="vWs-Nu-nnC"/>
+                        <outlet property="moreButton" destination="Dvs-jR-TUx" id="USH-hG-yYS"/>
                         <outlet property="redoButton" destination="kR6-vi-LmG" id="Sz6-ol-kvh"/>
                         <outlet property="reviseStackView" destination="MZN-TF-wYY" id="dNc-Y6-7aP"/>
                         <outlet property="searchButton" destination="KcH-ZY-M41" id="xWC-3e-khV"/>
@@ -636,10 +646,10 @@
         <image name="OpenAILogo.svg" width="1600" height="394"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="eraser" width="200" height="200"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="highlighter" catalog="system" width="128" height="119"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="paintpalette" catalog="system" width="128" height="105"/>
         <image name="pencil.and.outline" catalog="system" width="128" height="128"/>

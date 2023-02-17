@@ -15,6 +15,7 @@ class CanvasVC: UIViewController {
     @IBOutlet weak var fetchedImage: UIImageView!
     
     @IBOutlet weak var trayButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var reviseStackView: UIStackView!
     
     @IBOutlet var trayButtonCollection: [UIButton]!
@@ -39,6 +40,8 @@ class CanvasVC: UIViewController {
                                               "undoButton":false, "redoButton":false, "searchButton": false]
     
     let IconConfiguration = UIImage.SymbolConfiguration(pointSize: 35)
+    let regularCustomFont = "Sunflower-Light"
+    let menuIconConfiguration = UIImage.SymbolConfiguration(pointSize: 20)
     var tappedCount: Int = 0
     var fetchedImageUrl: String = ""
     
@@ -49,6 +52,7 @@ class CanvasVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         trayButtonCollection.forEach{ $0.addTarget(self, action: #selector(ButtonCollectionTapped(_:)), for: .touchUpInside)}
+        setMoreButtonMenuBar()
     }
     
     // MARK: - Method
@@ -146,6 +150,28 @@ class CanvasVC: UIViewController {
         }
     }
     
+    // 더보기 버튼이 클릭되면 해당 캔버스를 앨범에 improt 또는 삭제할 수 있는 menu 생성
+    @IBAction func moreButtonTapped(_ sender: Any) {
+        
+    }
+    
+    // 더보기 버튼의 메뉴바 세팅 function
+    func setMoreButtonMenuBar() {
+        let importTitle = "Import Canvas"
+        let importImage = UIImage(systemName: "square.and.arrow.down", withConfiguration: menuIconConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let deleteTitle = "Delete Canvas"
+        let deleteImage = UIImage(systemName: "trash", withConfiguration: menuIconConfiguration)?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        let importMenu = UIAction(title: importTitle,
+                              image: importImage,
+                              handler: {_ in print("다운로드")})
+        let deleteMenu = UIAction(title: deleteTitle,
+                                  image: deleteImage,
+                                  handler: {_ in print("삭제") })
+        let buttonMenu = UIMenu(children: [importMenu, deleteMenu])
+        moreButton.menu = buttonMenu
+    }
+    
+    
     // 도구버튼콜렉션에서 1개의 도구가 선택될때 그 도구의 색이 변하고 나머지는 원래대로 action
     func oneButtonCollectionTapped() {
         for (key, value) in buttonTappedStatus {
@@ -217,6 +243,7 @@ class CanvasVC: UIViewController {
         }
     }
     
+    
     // 세팅버튼 터치하면 세팅화면으로 이동하는 function
     @IBAction func settingButtonTabbed(_ sender: Any) {
         print("settingButton Tabbed")
@@ -242,6 +269,7 @@ class CanvasVC: UIViewController {
     
     // Eraser가 탭되면 지우개 선택되는 function
     @IBAction func eraserButtonTapped(_ sender: Any) {
+        print(eraserButtonTapped)
         brushWidth = 10.0
         opacity = 1.0
         color = UIColor.white
