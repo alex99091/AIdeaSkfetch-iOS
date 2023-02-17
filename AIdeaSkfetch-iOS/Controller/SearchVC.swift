@@ -47,6 +47,11 @@ class SearchVC: UIViewController {
         reloadInputViews()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     // MARK: - Method
     func setupView() {
         self.view.layer.cornerRadius = 10
@@ -85,7 +90,7 @@ class SearchVC: UIViewController {
     // progressbar 설정하기 -> refactoring 필요 download 함수 호출되면 속도에 맞추어 지금은 평균시간으로 계산함
     func progressCheck() {
         var value = 0.0
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { timer in
+        _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { timer in
             value += 0.075
             self.progressSlider.setProgress(Float(value), animated: true)
             if value > 20.0 {

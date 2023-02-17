@@ -28,7 +28,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="blankImage" translatesAutoresizingMaskIntoConstraints="NO" id="9Dy-K5-KBf">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="blankImage" translatesAutoresizingMaskIntoConstraints="NO" id="9Dy-K5-KBf">
                         <rect key="frame" x="1" y="1" width="451" height="399"/>
                     </imageView>
                 </subviews>

@@ -21,8 +21,11 @@ class MainVC: UIViewController {
     let backgroundColor = UIColor(rgb: 0xFFF44F)
     var introCell = IntroCell()
     
-    let canvasDatasource = CanvasDataSource()
+    var canvasDatasource = CanvasDataSource()
+    var dataStatus: Bool = false
     let filemanegerUrlPaths: [String] = []
+    var canvasVC: CanvasVC = CanvasVC()
+    
     
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
@@ -37,13 +40,27 @@ class MainVC: UIViewController {
         self.mainCollectionView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if dataStatus == true {
+            print("activated")
+            self.mainCollectionView.reloadData()
+        }
+       
+    }
+    
     // MARK: - Method
     
     /// contentVC에 셀 이미지를 클릭하면 canvas View로 넘어가는 function
-    @IBAction func nextVC() {
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: CanvasVC.identifier)
+    @IBAction func nextVC(_ index: Int) {
+        guard let canvasVC = self.storyboard?.instantiateViewController(withIdentifier: CanvasVC.identifier) as? CanvasVC
         else { return }
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        canvasVC.delegate = self
+        canvasVC.dataStatus = dataStatus
+        
+        // 이때 몇번째 cell이 선택되었는지 정보를 같이 넘긴다. (그래야 삭제를 index를 사용해서 삭제할수 잇음)
+        canvasVC.IndexOfdataSource = index
+        canvasVC.canvasDataSource = canvasDatasource
+        self.navigationController?.pushViewController(canvasVC, animated: true)
     }
 }
 
@@ -92,7 +109,10 @@ extension MainVC: UICollectionViewDataSource {
             
             for i in 0..<canvasDatasource.data.count {
                 if indexPath.row == i {
-                    //cell.canvasImage.image = canvasDatasource.data[i].canvasImage
+                    let uniqueFileName: String = canvasDatasource.findUUID(i, data: canvasDatasource.data)
+                    if let image: UIImage = ImageFileManager.shared.getSavedImage(named: uniqueFileName) {
+                        cell.canvasImage.image = image
+                    }
                     cell.canvasNameLabel.text = canvasDatasource.data[i].canvasName
                     cell.canvasNameLabel.font = UIFont(name: regularCustomFont, size: 12.0)
                     cell.canvasCreatedDate.text = canvasDatasource.data[i].createdDate
@@ -124,8 +144,8 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 40, height: 30)
         }
         if indexPath.section == 3 {
-            let width = self.view.frame.width * 0.475
-            let height = self.view.frame.width * 0.5
+            let width = self.view.frame.width * 0.45
+            let height = self.view.frame.width * 0.7
             return CGSize(width: width, height: height)
         }
         return CGSize(width: self.view.frame.width, height: self.view.frame.height)
@@ -153,6 +173,7 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(0)
     }
+    
     // ContentCell 클릭하면 CanvasVC로 이동하는 nextVC function
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1 {
@@ -161,7 +182,6 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
         if indexPath.section == 2 {
             if indexPath.row == 0 {
                 print("indexPath: \(indexPath.row), add icon touched")
-                
                 
                 let uuidData = UUID().uuidString
                 let now = Date()
@@ -176,11 +196,20 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
             } else if indexPath.row == 1 {
                 print("indexPath: \(indexPath.row), delete icon touched")
             }
-            
         }
         if indexPath.section == 3 {
             print("show CanvasVC")
-            nextVC()
+            nextVC(indexPath.row)
         }
+    }
+}
+
+// MARK: - CanvasVCDelegate
+// canvasVC에서 선택한 값 가져오기
+extension MainVC: CanvasVCDelegate {
+    func canvasVCFinished(_ canvasVC: CanvasVC) {
+        dataStatus = canvasVC.dataStatus
+        print("MainVC - dataStatus: \(dataStatus)")
+        dismiss(animated: true)
     }
 }

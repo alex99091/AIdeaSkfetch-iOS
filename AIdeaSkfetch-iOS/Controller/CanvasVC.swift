@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CanvasVCDelegate: AnyObject {
+  func canvasVCFinished(_ canvasVC: CanvasVC)
+}
+
 class CanvasVC: UIViewController {
     
     // MARK: - Outlet
@@ -25,8 +29,15 @@ class CanvasVC: UIViewController {
     @IBOutlet weak var redoButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     
+    // MARK: - Delegate
+    weak var delegate: CanvasVCDelegate?
+    
     // MARK: - Property
     static let identifier = String(describing: CanvasVC.self)
+    
+    var canvasDataSource: CanvasDataSource = CanvasDataSource()
+    var IndexOfdataSource: Int = 0
+    var dataStatus: Bool = false
     
     var lastPoint = CGPoint.zero
     var color = UIColor.black
@@ -48,14 +59,30 @@ class CanvasVC: UIViewController {
     var imageStack: [UIImage] = []
     var poppedImageStack: [UIImage] = []
     
+    
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkAndload()
         trayButtonCollection.forEach{ $0.addTarget(self, action: #selector(ButtonCollectionTapped(_:)), for: .touchUpInside)}
         setMoreButtonMenuBar()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     // MARK: - Method
+    // 기존 파일이 존재하면 로드해주기
+    func checkAndload(){
+        let uniqueFileName: String = canvasDataSource.findUUID(IndexOfdataSource, data: canvasDataSource.data)
+        if let image: UIImage = ImageFileManager.shared.getSavedImage(named: uniqueFileName) {
+            drawImage.image = image
+        }
+    }
+    
+    
     // 터치 이벤트 시작 - touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
@@ -150,27 +177,55 @@ class CanvasVC: UIViewController {
         }
     }
     
-    // 더보기 버튼이 클릭되면 해당 캔버스를 앨범에 improt 또는 삭제할 수 있는 menu 생성
-    @IBAction func moreButtonTapped(_ sender: Any) {
-        
-    }
-    
     // 더보기 버튼의 메뉴바 세팅 function
     func setMoreButtonMenuBar() {
-        let importTitle = "Import Canvas"
-        let importImage = UIImage(systemName: "square.and.arrow.down", withConfiguration: menuIconConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let saveTitle = "Save Canvas to Album"
+        let saveImage = UIImage(systemName: "square.and.arrow.down", withConfiguration: menuIconConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal)
         let deleteTitle = "Delete Canvas"
         let deleteImage = UIImage(systemName: "trash", withConfiguration: menuIconConfiguration)?.withTintColor(.red, renderingMode: .alwaysOriginal)
-        let importMenu = UIAction(title: importTitle,
-                              image: importImage,
-                              handler: {_ in print("다운로드")})
+        let importMenu = UIAction(title: saveTitle,
+                                  image: saveImage,
+                                  handler: {_ in self.saveImagetoAlbum() })
         let deleteMenu = UIAction(title: deleteTitle,
                                   image: deleteImage,
-                                  handler: {_ in print("삭제") })
+                                  attributes: .destructive,
+                                  handler: {_ in self.deleteAndBacktoMainVC() })
         let buttonMenu = UIMenu(children: [importMenu, deleteMenu])
         moreButton.menu = buttonMenu
     }
     
+    // 메뉴바에서 saveMenu를 탭하면 해당 이미지가 앨범에 저장되는 function
+    func saveImagetoAlbum() {
+        if !imageStack.isEmpty{
+            let image = imageStack.last!
+            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
+        }
+        let alertController = UIAlertController(title: nil, message: "Successfully Saved", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+          print("OK")
+        }
+        alertController.addAction(OKAction)
+        present(alertController, animated: true)
+    }
+    
+    // 메뉴바에서 deleteMenu를 탭하면 해당 canvas셀이 삭제되고 mainVC로 돌아가는 function
+    func deleteAndBacktoMainVC() {
+        let alertController = UIAlertController(title: nil, message: "Are you sure to delete?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("Cancel")
+        }
+        alertController.addAction(cancelAction)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            print("Delete")
+            self.canvasDataSource.delete(self.IndexOfdataSource)
+            self.dataStatus = true
+            print("CanvasVC - dataStatus: \(self.dataStatus)")
+            self.delegate?.canvasVCFinished(self)
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(deleteAction)
+        present(alertController, animated: true)
+    }
     
     // 도구버튼콜렉션에서 1개의 도구가 선택될때 그 도구의 색이 변하고 나머지는 원래대로 action
     func oneButtonCollectionTapped() {
@@ -310,9 +365,25 @@ class CanvasVC: UIViewController {
         self.present(searchVC, animated: true, completion: nil)
     }
     
+    // backVC에 누르면 마지막 이미지를 fileManager에 저장하는 함수
+    func saveLastCanvasImage() {
+        if !imageStack.isEmpty {
+            // Save Image
+            let image = imageStack.last!
+            let uniqueFileName: String = canvasDataSource.findUUID(IndexOfdataSource, data: canvasDataSource.data)
+            
+            ImageFileManager.shared.saveImage(image: image, name: uniqueFileName) { onSuccess in
+              print("saveImage onSuccess: \(onSuccess)")
+            }
+        }
+    }
     
     // 상단에 backButton을 누르면 mainVc로 돌아가는 backVC function
     @IBAction func backVC(_ sender: Any) {
+        self.dataStatus = true
+        print("CanvasVC - dataStatus: \(self.dataStatus)")
+        self.delegate?.canvasVCFinished(self)
+        saveLastCanvasImage()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -333,7 +404,7 @@ extension CanvasVC: SettingVCDelegate {
 }
 
 // MARK: - SearchVCDelegate
-// settingVC에서 선택한 값 가져오기
+// searchVC에서 선택한 값 가져오기
 extension CanvasVC: SearchVCDelegate {
     func searchVCFinished(_ searchVC: SearchVC) {
         fetchedImageUrl = searchVC.fetchedImageUrl

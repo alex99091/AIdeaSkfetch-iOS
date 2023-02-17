@@ -13,8 +13,11 @@ class CanvasDataSource: NSObject {
     func addData(_ canvas: Canvas) {
         data.append(canvas)
     }
-    func delete(_ cellRow: Int) {
-        data.remove(at: cellRow)
+    func delete(_ idx: Int) {
+        data.remove(at: idx)
+    }
+    func findUUID(_ idx: Int, data: [Canvas]) -> String {
+        return data[idx].canvasId!
     }
 }
 
