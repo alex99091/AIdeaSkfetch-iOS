@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2600D66A299CF10400EB403F /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600D669299CF10400EB403F /* ImageCell.swift */; };
+		26306A15299FD6D700CE8C40 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26306A14299FD6D700CE8C40 /* UIColor.swift */; };
+		26306A17299FD70D00CE8C40 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26306A16299FD70D00CE8C40 /* UIImageView.swift */; };
 		2633B71C299368C900BDF0BC /* CanvasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2633B71B299368C900BDF0BC /* CanvasCell.swift */; };
 		2633B71E299368D500BDF0BC /* CanvasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2633B71D299368D500BDF0BC /* CanvasCell.xib */; };
 		2661A2EF299869A800C1695E /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2661A2EE299869A800C1695E /* SettingVC.swift */; };
@@ -34,11 +36,12 @@
 		26D0E7D32994A57A008A603D /* IntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7D22994A57A008A603D /* IntroCell.swift */; };
 		26D0E7D52994A58C008A603D /* IntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D0E7D42994A58B008A603D /* IntroCell.xib */; };
 		26D0E7D92994A8D6008A603D /* OperatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7D82994A8D6008A603D /* OperatingCell.swift */; };
-		26D0E7DB2994B638008A603D /* userData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0E7DA2994B638008A603D /* userData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2600D669299CF10400EB403F /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		26306A14299FD6D700CE8C40 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		26306A16299FD70D00CE8C40 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		2633B71B299368C900BDF0BC /* CanvasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasCell.swift; sourceTree = "<group>"; };
 		2633B71D299368D500BDF0BC /* CanvasCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CanvasCell.xib; sourceTree = "<group>"; };
 		2661A2EE299869A800C1695E /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		26D0E7D22994A57A008A603D /* IntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCell.swift; sourceTree = "<group>"; };
 		26D0E7D42994A58B008A603D /* IntroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroCell.xib; sourceTree = "<group>"; };
 		26D0E7D82994A8D6008A603D /* OperatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingCell.swift; sourceTree = "<group>"; };
-		26D0E7DA2994B638008A603D /* userData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				26646D5629962D130089F7F0 /* Font */,
+				26306A14299FD6D700CE8C40 /* UIColor.swift */,
+				26306A16299FD70D00CE8C40 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -154,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				26BF3704299BADD0001C04F6 /* OpenAIResponse.swift */,
-				26D0E7DA2994B638008A603D /* userData.swift */,
 				26646D6B29965F360089F7F0 /* CanvasDataSource.swift */,
 			);
 			path = Model;
@@ -302,10 +305,11 @@
 				2661A2EF299869A800C1695E /* SettingVC.swift in Sources */,
 				26D0E7D32994A57A008A603D /* IntroCell.swift in Sources */,
 				26BF3705299BADD0001C04F6 /* OpenAIResponse.swift in Sources */,
-				26D0E7DB2994B638008A603D /* userData.swift in Sources */,
+				26306A15299FD6D700CE8C40 /* UIColor.swift in Sources */,
 				26CB6A2C2991F07D0032A6FF /* MainVC.swift in Sources */,
 				26BF370D299BC083001C04F6 /* SearchVC.swift in Sources */,
 				269AB63C2995388C00401D12 /* CanvasVC.swift in Sources */,
+				26306A17299FD70D00CE8C40 /* UIImageView.swift in Sources */,
 				26CB6A282991F07D0032A6FF /* AppDelegate.swift in Sources */,
 				26BF3708299BB248001C04F6 /* SearchAPI.swift in Sources */,
 				26646D6C29965F360089F7F0 /* CanvasDataSource.swift in Sources */,

@@ -145,7 +145,7 @@ class CanvasVC: UIViewController {
         } else {
             let image = UIImage(systemName: "tray.and.arrow.down", withConfiguration: IconConfiguration)
             trayButton.setImage(image, for: .normal)
-            trayButton.tintColor = UIColor(rgb: 0xFBB800)
+            trayButton.tintColor = UIColor(rgb: 0x80C610)
             reviseStackView.isHidden = false
         }
     }
@@ -305,6 +305,7 @@ class CanvasVC: UIViewController {
         searchVC.providesPresentationContextTransitionStyle = true
         searchVC.definesPresentationContext = true
         searchVC.modalTransitionStyle = .crossDissolve
+        searchVC.view.layer.cornerRadius = 10
         
         self.present(searchVC, animated: true, completion: nil)
     }

@@ -36,7 +36,7 @@ class SearchVC: UIViewController {
     private var observation: NSKeyValueObservation?
     var searchTerm: String = ""
     var userInputStatus: Bool = false
-    
+    var searchStatus: Bool = true
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         print("SearchView Loaded")
@@ -50,7 +50,7 @@ class SearchVC: UIViewController {
     // MARK: - Method
     func setupView() {
         self.view.layer.cornerRadius = 10
-        explainLabel.text = "If you entered search-term, you would get two Images below. Tap what you prefer to use"
+        explainLabel.text = "If you entered search-term, you would get four Images below. Tap what you prefer to use"
         explainLabel.font = UIFont(name: regularCustomFont, size: 12.0)
         self.searchBar.searchTextField.addTarget(self, action: #selector(searchTermInput(_:)), for: .editingChanged)
     }
@@ -76,10 +76,16 @@ class SearchVC: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: dispatchWorkItem)
     }
+    // 검색이 실패하면 CanvasVc로 보내는 함수
+    func searchFailed() {
+        let alert = UIAlertController(title: "Failure", message: "Currently OPENAI API is not being provided", preferredStyle: UIAlertController.Style.alert)
+        present(alert, animated: true, completion: nil)
+    }
+    
     // progressbar 설정하기 -> refactoring 필요 download 함수 호출되면 속도에 맞추어 지금은 평균시간으로 계산함
     func progressCheck() {
         var value = 0.0
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: { timer in
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { timer in
             value += 0.075
             self.progressSlider.setProgress(Float(value), animated: true)
             if value > 20.0 {
@@ -119,6 +125,7 @@ extension SearchVC: UICollectionViewDataSource {
                     
                 case .failure(let failure):
                     print("failure: \(failure)")
+                    self.searchStatus = false
                 }
             })
         } else if userInputStatus == false {
@@ -129,6 +136,9 @@ extension SearchVC: UICollectionViewDataSource {
             }
         }
         //cell.backgroundColor = .black
+        if searchStatus == false {
+            searchFailed()
+        }
         return cell
     }
 }
@@ -159,24 +169,6 @@ extension SearchVC: UICollectionViewDelegate {
                 print("current: SearchVC, fetchedUrl = \(fetchedImageUrl)")
                 delegate?.searchVCFinished(self)
                 self.navigationController?.popViewController(animated: true)
-            }
-        }
-    }
-    
-}
-
-
-
-// url 링크 -> UIImage fetch
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
             }
         }
     }

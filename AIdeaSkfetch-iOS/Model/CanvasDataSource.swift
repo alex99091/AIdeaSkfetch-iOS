@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CanvasDataSource {
+class CanvasDataSource: NSObject {
     var data: [Canvas] = []
     
     func addData(_ canvas: Canvas) {
@@ -18,24 +18,16 @@ class CanvasDataSource {
     }
 }
 
-class Canvas: Identifiable {
-    let now = Date()
-    let date = DateFormatter()
+class Canvas: NSObject {
     var canvasId: String?
-    var canvasImage: UIImage?
+    var canvasImage: String?
     var canvasName: String?
     var createdDate: String?
-    var canvasCommands: [Command]
     
-    init(id: String?, image: UIImage?, name: String?, date: String?, commands: [Command]) {
+    init(id: String?, image: String?, name: String?, date: String?) {
         self.canvasId = id
         self.canvasImage = image
         self.canvasName = name
         self.createdDate = date
-        self.canvasCommands = commands
     }
-}
-
-struct Command {
-    var drawLines: [String?]
 }
