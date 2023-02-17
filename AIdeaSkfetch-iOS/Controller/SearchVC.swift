@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-protocol SearchVCDelegate: class {
+protocol SearchVCDelegate: AnyObject {
   func searchVCFinished(_ searchVC: SearchVC)
 }
 
@@ -49,6 +49,7 @@ class SearchVC: UIViewController {
     
     // MARK: - Method
     func setupView() {
+        self.view.layer.cornerRadius = 10
         explainLabel.text = "If you entered search-term, you would get two Images below. Tap what you prefer to use"
         explainLabel.font = UIFont(name: regularCustomFont, size: 12.0)
         self.searchBar.searchTextField.addTarget(self, action: #selector(searchTermInput(_:)), for: .editingChanged)
@@ -78,7 +79,7 @@ class SearchVC: UIViewController {
     // progressbar 설정하기 -> refactoring 필요 download 함수 호출되면 속도에 맞추어 지금은 평균시간으로 계산함
     func progressCheck() {
         var value = 0.0
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { timer in
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: { timer in
             value += 0.075
             self.progressSlider.setProgress(Float(value), animated: true)
             if value > 20.0 {

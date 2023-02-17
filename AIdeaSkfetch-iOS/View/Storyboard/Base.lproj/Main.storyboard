@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xLW-0s-Qrb" userLabel="Fetched Image">
-                                <rect key="frame" x="80" y="194" width="254" height="254"/>
+                                <rect key="frame" x="80" y="244" width="254" height="254"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xLW-0s-Qrb" secondAttribute="height" multiplier="1:1" id="gas-hf-FDO"/>
                                 </constraints>
@@ -184,6 +184,9 @@
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
+                                        <connections>
+                                            <action selector="undoButtonTapped:" destination="kGu-he-IDy" eventType="touchUpInside" id="W8A-Qj-swQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR6-vi-LmG" userLabel="RedoButton">
                                         <rect key="frame" x="250.5" y="0.0" width="30" height="30"/>
@@ -198,6 +201,9 @@
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
+                                        <connections>
+                                            <action selector="redoButtonTapped:" destination="kGu-he-IDy" eventType="touchUpInside" id="zLM-eh-b8G"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcH-ZY-M41" userLabel="SearchButton">
                                         <rect key="frame" x="334" y="0.0" width="30" height="30"/>
@@ -223,7 +229,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="DfD-RX-kdW" secondAttribute="bottom" id="3Pm-4P-mBY"/>
-                            <constraint firstItem="xLW-0s-Qrb" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="150" id="4BP-zH-pgN"/>
+                            <constraint firstItem="xLW-0s-Qrb" firstAttribute="top" secondItem="LZs-Hj-8r5" secondAttribute="top" constant="200" id="4BP-zH-pgN"/>
                             <constraint firstItem="DfD-RX-kdW" firstAttribute="leading" secondItem="okH-sd-hll" secondAttribute="leading" id="60V-Lj-Z8y"/>
                             <constraint firstItem="xLW-0s-Qrb" firstAttribute="leading" secondItem="LZs-Hj-8r5" secondAttribute="leading" constant="80" id="8F6-lQ-310"/>
                             <constraint firstItem="HDF-Ga-j0G" firstAttribute="leading" secondItem="RgY-Q7-a9p" secondAttribute="trailing" constant="15" id="8Su-fd-wuU"/>
@@ -249,13 +255,19 @@
                     <connections>
                         <outlet property="canvasImage" destination="bT3-Ec-Vhb" id="tjP-eV-6a8"/>
                         <outlet property="drawImage" destination="DfD-RX-kdW" id="5i2-qc-Jqb"/>
-                        <outlet property="eraserButton" destination="PY9-D2-Lfo" id="O2q-YG-sOE"/>
+                        <outlet property="eraserButton" destination="PY9-D2-Lfo" id="YAc-SO-rrn"/>
                         <outlet property="fetchedImage" destination="xLW-0s-Qrb" id="vWs-Nu-nnC"/>
-                        <outlet property="redoButon" destination="kR6-vi-LmG" id="hxC-uU-SP7"/>
+                        <outlet property="redoButton" destination="kR6-vi-LmG" id="Sz6-ol-kvh"/>
                         <outlet property="reviseStackView" destination="MZN-TF-wYY" id="dNc-Y6-7aP"/>
-                        <outlet property="settingButton" destination="Nw2-Sj-AnU" id="iIN-Wd-ZmK"/>
+                        <outlet property="searchButton" destination="KcH-ZY-M41" id="xWC-3e-khV"/>
+                        <outlet property="settingButton" destination="Nw2-Sj-AnU" id="xxb-43-6Ex"/>
                         <outlet property="trayButton" destination="RgY-Q7-a9p" id="79M-ye-hm8"/>
-                        <outlet property="undoButton" destination="ewp-Pm-IKl" id="6GF-0f-D2y"/>
+                        <outlet property="undoButton" destination="ewp-Pm-IKl" id="tGZ-e7-3Ao"/>
+                        <outletCollection property="trayButtonCollection" destination="Nw2-Sj-AnU" collectionClass="NSMutableArray" id="jar-8r-gbr"/>
+                        <outletCollection property="trayButtonCollection" destination="PY9-D2-Lfo" collectionClass="NSMutableArray" id="i0q-WB-fHL"/>
+                        <outletCollection property="trayButtonCollection" destination="ewp-Pm-IKl" collectionClass="NSMutableArray" id="36T-E2-gkO"/>
+                        <outletCollection property="trayButtonCollection" destination="kR6-vi-LmG" collectionClass="NSMutableArray" id="5zG-Vh-lEA"/>
+                        <outletCollection property="trayButtonCollection" destination="KcH-ZY-M41" collectionClass="NSMutableArray" id="cXQ-jb-m2k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPx-f8-baC" sceneMemberID="firstResponder"/>
@@ -287,7 +299,7 @@
                                                 <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                                <color key="value" red="0.87450980389999999" green="0.80000000000000004" blue="0.22352941179999999" alpha="0.79496228449999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.95686274510000002" green="0.058823529409999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
                                                 <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -323,7 +335,7 @@
                                                 <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                                <color key="value" red="0.87450980389999999" green="0.80000000000000004" blue="0.22352941179999999" alpha="0.79496228449999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.95686274510000002" green="0.058823529409999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
                                                 <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -373,6 +385,7 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scribble.variable" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t4e-zn-5kG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="19.5"/>
+                                                                <color key="tintColor" red="0.95686274509803915" green="0.058823529411764705" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="10.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAT-Nd-wFo">
                                                                 <rect key="frame" x="72" y="0.0" width="72" height="20.5"/>
@@ -390,6 +403,7 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.and.outline" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TOq-Dg-8cw">
                                                                 <rect key="frame" x="0.0" y="-1" width="72" height="20.5"/>
+                                                                <color key="tintColor" red="0.95686274510000002" green="0.058823529409999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xlj-Qd-ivx">
                                                                 <rect key="frame" x="72" y="0.0" width="72" height="20.5"/>
@@ -407,6 +421,7 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paintpalette" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wjm-hf-uZC">
                                                                 <rect key="frame" x="0.0" y="1" width="72" height="19"/>
+                                                                <color key="tintColor" red="0.95686274510000002" green="0.058823529409999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="#000000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkf-Pc-mJp">
                                                                 <rect key="frame" x="72" y="0.0" width="72" height="20.5"/>
@@ -441,7 +456,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="0.74115175099999997" green="1" blue="0.4820519727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.95686274510000002" green="0.058823529409999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -455,6 +470,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QK8-GL-1FN">
                                 <rect key="frame" x="184.5" y="816" width="45" height="31"/>
+                                <color key="tintColor" red="0.95686274510000002" green="0.058823529409999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" image="heart.circle.fill" catalog="system" title=""/>
                                 <connections>
@@ -463,7 +479,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jet-PR-KXE"/>
-                        <color key="backgroundColor" red="0.98431372549019602" green="0.72156862745098038" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.50196078431372548" green="0.77647058823529413" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LTx-MG-MAi" firstAttribute="top" secondItem="VK7-gT-FjH" secondAttribute="bottom" constant="10" id="2ea-Wa-2s0"/>
                             <constraint firstItem="QK8-GL-1FN" firstAttribute="centerX" secondItem="jet-PR-KXE" secondAttribute="centerX" id="4YL-bm-C3o"/>
@@ -575,7 +591,7 @@
                                         <color key="trackTintColor" red="0.50196078431372548" green="0.77647058823529413" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98431372549019602" green="0.72156862745098038" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.50196078430000002" green="0.77647058820000003" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="OBX-ke-KbR" firstAttribute="top" secondItem="AyJ-0C-3FE" secondAttribute="bottom" constant="10" id="0Ei-da-LDv"/>
                                     <constraint firstItem="HbQ-Wb-BAW" firstAttribute="leading" secondItem="OBX-ke-KbR" secondAttribute="leading" id="43e-zg-pE4"/>

@@ -15,11 +15,14 @@ class CanvasVC: UIViewController {
     @IBOutlet weak var fetchedImage: UIImageView!
     
     @IBOutlet weak var trayButton: UIButton!
-    @IBOutlet weak var eraserButton: UIButton!
-    @IBOutlet weak var settingButton: UIButton!
-    @IBOutlet weak var undoButton: UIButton!
-    @IBOutlet weak var redoButon: UIButton!
     @IBOutlet weak var reviseStackView: UIStackView!
+    
+    @IBOutlet var trayButtonCollection: [UIButton]!
+    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var eraserButton: UIButton!
+    @IBOutlet weak var undoButton: UIButton!
+    @IBOutlet weak var redoButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
     
     // MARK: - Property
     static let identifier = String(describing: CanvasVC.self)
@@ -32,14 +35,20 @@ class CanvasVC: UIViewController {
     var dataFetched = false
     
     var drawCommand: [[String: Any]] = [[:]]
+    var buttonTappedStatus: [String: Bool] = ["settingButton":false, "eraserButton":false,
+                                              "undoButton":false, "redoButton":false, "searchButton": false]
     
     let IconConfiguration = UIImage.SymbolConfiguration(pointSize: 35)
     var tappedCount: Int = 0
     var fetchedImageUrl: String = ""
     
+    var imageStack: [UIImage] = []
+    var poppedImageStack: [UIImage] = []
+    
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        trayButtonCollection.forEach{ $0.addTarget(self, action: #selector(ButtonCollectionTapped(_:)), for: .touchUpInside)}
     }
     
     // MARK: - Method
@@ -69,6 +78,9 @@ class CanvasVC: UIViewController {
         drawImage.image = UIGraphicsGetImageFromCurrentImageContext()
         drawImage.alpha = opacity
         UIGraphicsEndImageContext()
+        
+        // 다시 그려질때 poppedImageStack 초기화
+        poppedImageStack = []
     }
     
     // 터치 움직이는 이벤트 - touchesMoved
@@ -94,8 +106,12 @@ class CanvasVC: UIViewController {
         canvasImage.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+        // imageStack에 액션별 이미지 담아주기
+        imageStack.append(canvasImage.image!)
+        
         drawImage.image = nil
     }
+    
     
     // 이미지를 선택하면 이미지를 canvas에 옮기는 이벤트
     func fetchImageToCanvas() {
@@ -120,16 +136,86 @@ class CanvasVC: UIViewController {
         if tappedCount % 2 == 0 {
             reviseStackView.isHidden = true
             let image = UIImage(systemName: "tray", withConfiguration: IconConfiguration)
-                    trayButton.setImage(image, for: .normal)
-                    trayButton.tintColor = UIColor(rgb: 0x20A0D0)
+            trayButton.setImage(image, for: .normal)
+            trayButton.tintColor = UIColor(rgb: 0x20A0D0)
         } else {
             let image = UIImage(systemName: "tray.and.arrow.down", withConfiguration: IconConfiguration)
-                   trayButton.setImage(image, for: .normal)
-                   trayButton.tintColor = UIColor(rgb: 0xFBB800)
+            trayButton.setImage(image, for: .normal)
+            trayButton.tintColor = UIColor(rgb: 0xFBB800)
             reviseStackView.isHidden = false
         }
     }
     
+    // 도구버튼콜렉션에서 1개의 도구가 선택될때 그 도구의 색이 변하고 나머지는 원래대로 action
+    func oneButtonCollectionTapped() {
+        for (key, value) in buttonTappedStatus {
+            value == true ? changeButtonTintColor(key) : changeButtonDefaultColor(key)
+        }
+        print(buttonTappedStatus)
+    }
+    
+    func changeButtonTintColor(_ key: String) {
+        switch key {
+        case "settingButton":
+            settingButton.tintColor = UIColor(rgb:0xF40F20)
+        case "eraserButton":
+            let image = UIImage(named: "eraserTapped")
+            eraserButton.setImage(image, for: .normal)
+        case "undoButton":
+            undoButton.tintColor = UIColor(rgb:0xF40F20)
+        case "redoButton":
+            redoButton.tintColor = UIColor(rgb:0xF40F20)
+        case "searchButton":
+            searchButton.tintColor = UIColor(rgb:0xF40F20)
+        default:
+            print("none selected")
+        }
+    }
+    
+    func changeButtonDefaultColor(_ key: String) {
+        switch key {
+        case "settingButton":
+            settingButton.tintColor = UIColor(rgb:0x80C610)
+        case "eraserButton":
+            let image = UIImage(named: "eraser")
+            eraserButton.setImage(image, for: .normal)
+        case "undoButton":
+            undoButton.tintColor = UIColor(rgb:0x80C610)
+        case "redoButton":
+            redoButton.tintColor = UIColor(rgb:0x80C610)
+        case "searchButton":
+            searchButton.tintColor = UIColor(rgb:0x80C610)
+        default:
+            print("none selected")
+        }
+    }
+    
+    @objc fileprivate func ButtonCollectionTapped(_ sender: UIButton) {
+        switch sender{
+        case settingButton:
+            buttonTappedStatus = ["settingButton":true, "eraserButton":false,
+                                  "undoButton":false, "redoButton":false, "searchButton": false]
+            oneButtonCollectionTapped()
+        case eraserButton:
+            buttonTappedStatus = ["settingButton":false, "eraserButton":true,
+                                  "undoButton":false, "redoButton":false, "searchButton": false]
+            oneButtonCollectionTapped()
+        case undoButton:
+            buttonTappedStatus = ["settingButton":false, "eraserButton":false,
+                                  "undoButton":true, "redoButton":false, "searchButton": false]
+            oneButtonCollectionTapped()
+        case redoButton:
+            buttonTappedStatus = ["settingButton":false, "eraserButton":false,
+                                  "undoButton":false, "redoButton":true, "searchButton": false]
+            oneButtonCollectionTapped()
+        case searchButton:
+            buttonTappedStatus = ["settingButton":false, "eraserButton":false,
+                                  "undoButton":false, "redoButton":false, "searchButton": true]
+            oneButtonCollectionTapped()
+        default:
+            print("none selected")
+        }
+    }
     
     // 세팅버튼 터치하면 세팅화면으로 이동하는 function
     @IBAction func settingButtonTabbed(_ sender: Any) {
@@ -161,6 +247,24 @@ class CanvasVC: UIViewController {
         color = UIColor.white
     }
     
+    // Undo가 탭되면 전에 했던 액션이 되돌리기
+    @IBAction func undoButtonTapped(_ sender: Any) {
+        if imageStack.count > 1 {
+            poppedImageStack.append(imageStack.removeLast())
+            canvasImage.image = imageStack[imageStack.count - 1]
+        }
+        print("imageStack.count - \(imageStack.count), poppedImageStack.count - \(poppedImageStack.count)")
+    }
+    
+    // Redo가 탭되면 전에 했던 액션 앞으로가기
+    @IBAction func redoButtonTapped(_ sender: Any) {
+        if poppedImageStack.count > 1 {
+            imageStack.append(poppedImageStack.removeLast())
+            canvasImage.image = nil
+            canvasImage.image = imageStack[imageStack.count - 1]
+        }
+        print("imageStack.count - \(imageStack.count), poppedImageStack.count - \(poppedImageStack.count)")
+    }
     
     // Search 버튼 누르면 search뷰로 이동하는 function
     @IBAction func searchButtonTapped(_ sender: Any) {

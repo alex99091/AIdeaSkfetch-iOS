@@ -9,7 +9,7 @@ import UIKit
 import HGCircularSlider
 import FlexColorPicker
 
-protocol SettingVCDelegate: class {
+protocol SettingVCDelegate: AnyObject {
   func settingsVCFinished(_ settingVC: SettingVC)
 }
 
