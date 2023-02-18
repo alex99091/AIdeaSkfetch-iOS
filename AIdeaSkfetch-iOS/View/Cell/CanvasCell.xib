@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CanvasName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbm-xv-clN">
-                        <rect key="frame" x="20" y="405" width="403" height="21"/>
+                        <rect key="frame" x="20" y="400" width="403" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,9 +29,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="blankImage" translatesAutoresizingMaskIntoConstraints="NO" id="9Dy-K5-KBf">
-                        <rect key="frame" x="1" y="1" width="451" height="399"/>
+                        <rect key="frame" x="1" y="1" width="451" height="394"/>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" red="0.98431372549019602" green="0.72156862745098038" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="dhi-4W-IxP" firstAttribute="leading" secondItem="9kv-qA-XTX" secondAttribute="leading" constant="20" id="4TR-Wj-Fvh"/>
                     <constraint firstAttribute="trailing" secondItem="mbm-xv-clN" secondAttribute="trailing" constant="30" id="A6A-MT-Q5r"/>
@@ -39,7 +40,7 @@
                     <constraint firstItem="mbm-xv-clN" firstAttribute="top" secondItem="9Dy-K5-KBf" secondAttribute="bottom" constant="5" id="Lez-cS-x7h"/>
                     <constraint firstItem="mbm-xv-clN" firstAttribute="leading" secondItem="9kv-qA-XTX" secondAttribute="leading" constant="20" id="MLl-aK-CNN"/>
                     <constraint firstItem="9Dy-K5-KBf" firstAttribute="top" secondItem="9kv-qA-XTX" secondAttribute="top" constant="1" id="gkN-eT-url"/>
-                    <constraint firstItem="dhi-4W-IxP" firstAttribute="top" secondItem="mbm-xv-clN" secondAttribute="bottom" id="rU7-3x-mqs"/>
+                    <constraint firstItem="dhi-4W-IxP" firstAttribute="top" secondItem="mbm-xv-clN" secondAttribute="bottom" constant="5" id="rU7-3x-mqs"/>
                     <constraint firstAttribute="trailing" secondItem="9Dy-K5-KBf" secondAttribute="trailing" constant="1" id="sRc-Fc-fl7"/>
                     <constraint firstAttribute="trailing" secondItem="dhi-4W-IxP" secondAttribute="trailing" constant="30" id="wch-f3-8v0"/>
                     <constraint firstItem="9Dy-K5-KBf" firstAttribute="leading" secondItem="9kv-qA-XTX" secondAttribute="leading" constant="1" id="ygc-vL-j7R"/>

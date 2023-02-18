@@ -7,30 +7,41 @@
 
 import UIKit
 
-class CanvasDataSource: NSObject {
+class CanvasDataSource: NSObject, Codable {
     var data: [Canvas] = []
     
     func addData(_ canvas: Canvas) {
         data.append(canvas)
     }
     func delete(_ idx: Int) {
-        data.remove(at: idx)
+        if idx >= 0 {
+            data.remove(at: idx)
+        }
     }
-    func findUUID(_ idx: Int, data: [Canvas]) -> String {
-        return data[idx].canvasId!
+    func findTargetedIndexWithUUID(_ data: [Canvas], selectedUUID: String) -> Int{
+        var targetIndex = -1
+        if !data.isEmpty {
+            for i in 0..<data.count {
+                if data[i].canvasId == selectedUUID{
+                    targetIndex = i
+                }
+            }
+        }
+        return targetIndex
     }
 }
 
-class Canvas: NSObject {
+class Canvas: NSObject, Codable {
     var canvasId: String?
-    var canvasImage: String?
+    var canvasImageUrl: String?
     var canvasName: String?
     var createdDate: String?
     
-    init(id: String?, image: String?, name: String?, date: String?) {
+    init(id: String?, canvasImageUrl: String?, name: String?, date: String?) {
         self.canvasId = id
-        self.canvasImage = image
+        self.canvasImageUrl = canvasImageUrl
         self.canvasName = name
         self.createdDate = date
     }
 }
+

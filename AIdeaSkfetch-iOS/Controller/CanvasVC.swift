@@ -36,8 +36,10 @@ class CanvasVC: UIViewController {
     static let identifier = String(describing: CanvasVC.self)
     
     var canvasDataSource: CanvasDataSource = CanvasDataSource()
-    var IndexOfdataSource: Int = 0
+    var canvasUUID: String = ""
+    var indexOfSelectedData: Int = -1
     var dataStatus: Bool = false
+    var searchStatus: Bool = true
     
     var lastPoint = CGPoint.zero
     var color = UIColor.black
@@ -63,6 +65,9 @@ class CanvasVC: UIViewController {
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkCurrentIndexOfDataSource()
+        print("CanvasVC uniquename: \(canvasUUID)")
+        print("CanvasVC data index: \(indexOfSelectedData)")
         checkAndload()
         trayButtonCollection.forEach{ $0.addTarget(self, action: #selector(ButtonCollectionTapped(_:)), for: .touchUpInside)}
         setMoreButtonMenuBar()
@@ -73,12 +78,31 @@ class CanvasVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if searchStatus == false {
+            searchFailed()
+        }
+        reloadInputViews()
+    }
+    // 검색이 실패하면 Alert생성하는 함수
+    func searchFailed() {
+        let alertController = UIAlertController(title: "Failure", message: "Currently OPENAI API is not being provided", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Okay", style: .cancel) { (action) in
+            print("okay")
+            self.navigationController?.popViewController(animated: true)
+            self.searchStatus = false
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: - Method
     // 기존 파일이 존재하면 로드해주기
     func checkAndload(){
-        let uniqueFileName: String = canvasDataSource.findUUID(IndexOfdataSource, data: canvasDataSource.data)
-        if let image: UIImage = ImageFileManager.shared.getSavedImage(named: uniqueFileName) {
-            drawImage.image = image
+        if canvasDataSource.data.count > 0 {
+            if let image: UIImage = ImageFileManager.shared.getSavedImage(named: canvasUUID) {
+                drawImage.image = image
+            }
         }
     }
     
@@ -149,7 +173,9 @@ class CanvasVC: UIViewController {
         
         UIGraphicsBeginImageContext(canvasImage.frame.size)
         canvasImage.image?.draw(in: view.bounds, blendMode: .normal, alpha: 1.0)
-        fetchedImage.load(url: URL(string: fetchedImageUrl)!)
+        if fetchedImageUrl.count > 0 {
+            fetchedImage.load(url: URL(string: fetchedImageUrl)!)
+        }
         fetchedImage?.image?.draw(in: view.bounds, blendMode: .normal, alpha: opacity)
         canvasImage.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -208,6 +234,19 @@ class CanvasVC: UIViewController {
         present(alertController, animated: true)
     }
     
+    // 셀이 삭제되면, 셀에 저장된 이미지도 삭제되는 function
+    func deleteImageFileTogether() {
+        if canvasDataSource.data.count > 0 {
+            ImageFileManager.shared.deleteImage(named: canvasUUID) { onSuccess in
+                print("delete = \(onSuccess)")
+            }
+        }
+    }
+    // 셀이 생성될때 이 셀이 데이터소스의 몇번째 인덱스로부터 호출되었는지 해당 index를 return하는 함수
+    func checkCurrentIndexOfDataSource() {
+        indexOfSelectedData = canvasDataSource.findTargetedIndexWithUUID(canvasDataSource.data, selectedUUID: canvasUUID)
+    }
+    
     // 메뉴바에서 deleteMenu를 탭하면 해당 canvas셀이 삭제되고 mainVC로 돌아가는 function
     func deleteAndBacktoMainVC() {
         let alertController = UIAlertController(title: nil, message: "Are you sure to delete?", preferredStyle: .alert)
@@ -217,7 +256,8 @@ class CanvasVC: UIViewController {
         alertController.addAction(cancelAction)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             print("Delete")
-            self.canvasDataSource.delete(self.IndexOfdataSource)
+            self.canvasDataSource.delete(self.indexOfSelectedData)
+            self.deleteImageFileTogether()
             self.dataStatus = true
             print("CanvasVC - dataStatus: \(self.dataStatus)")
             self.delegate?.canvasVCFinished(self)
@@ -370,9 +410,8 @@ class CanvasVC: UIViewController {
         if !imageStack.isEmpty {
             // Save Image
             let image = imageStack.last!
-            let uniqueFileName: String = canvasDataSource.findUUID(IndexOfdataSource, data: canvasDataSource.data)
-            
-            ImageFileManager.shared.saveImage(image: image, name: uniqueFileName) { onSuccess in
+            deleteImageFileTogether() // 저장하기전에 imageFile clear
+            ImageFileManager.shared.saveImage(image: image, name: canvasUUID) { onSuccess in
               print("saveImage onSuccess: \(onSuccess)")
             }
         }
@@ -409,6 +448,7 @@ extension CanvasVC: SearchVCDelegate {
     func searchVCFinished(_ searchVC: SearchVC) {
         fetchedImageUrl = searchVC.fetchedImageUrl
         self.dataFetched = true
+        searchStatus = false
         print("current: CanvasVC, fetchedImageUrl: \(fetchedImageUrl), status: \(dataFetched)")
         self.fetchImageToCanvas()
         dismiss(animated: true)

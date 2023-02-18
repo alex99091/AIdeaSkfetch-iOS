@@ -37,6 +37,7 @@ class SearchVC: UIViewController {
     var searchTerm: String = ""
     var userInputStatus: Bool = false
     var searchStatus: Bool = true
+    
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         print("SearchView Loaded")
@@ -59,6 +60,7 @@ class SearchVC: UIViewController {
         explainLabel.font = UIFont(name: regularCustomFont, size: 12.0)
         self.searchBar.searchTextField.addTarget(self, action: #selector(searchTermInput(_:)), for: .editingChanged)
     }
+    
     // MARK: - User Interaction methods
     // 검색어 입력
     @objc func searchTermInput(_ sender: UITextField) {
@@ -81,10 +83,16 @@ class SearchVC: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: dispatchWorkItem)
     }
-    // 검색이 실패하면 CanvasVc로 보내는 함수
+    // 검색이 실패하면 Alert생성하는 함수
     func searchFailed() {
-        let alert = UIAlertController(title: "Failure", message: "Currently OPENAI API is not being provided", preferredStyle: UIAlertController.Style.alert)
-        present(alert, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "Failure", message: "Currently OPENAI API is not being provided", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Okay", style: .cancel) { (action) in
+            print("okay")
+            self.navigationController?.popViewController(animated: true)
+            self.searchStatus = false
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     // progressbar 설정하기 -> refactoring 필요 download 함수 호출되면 속도에 맞추어 지금은 평균시간으로 계산함
@@ -130,7 +138,6 @@ extension SearchVC: UICollectionViewDataSource {
                     
                 case .failure(let failure):
                     print("failure: \(failure)")
-                    self.searchStatus = false
                 }
             })
         } else if userInputStatus == false {
@@ -139,10 +146,6 @@ extension SearchVC: UICollectionViewDataSource {
                     cell.imageCellContentImage.image = UIImage(named: "blankImage")
                 }
             }
-        }
-        //cell.backgroundColor = .black
-        if searchStatus == false {
-            searchFailed()
         }
         return cell
     }
@@ -170,8 +173,12 @@ extension SearchVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         for i in 0...3 {
             if indexPath.row == i {
-                self.fetchedImageUrl = fetchedImageUrlList[i].url!
-                print("current: SearchVC, fetchedUrl = \(fetchedImageUrl)")
+                if fetchedImageUrl.count > 0 {
+                    self.fetchedImageUrl = fetchedImageUrlList[i].url!
+                    print("current: SearchVC, fetchedUrl = \(fetchedImageUrl)")
+                } else if fetchedImageUrl.count == 0 {
+                    self.searchStatus = false
+                }
                 delegate?.searchVCFinished(self)
                 self.navigationController?.popViewController(animated: true)
             }

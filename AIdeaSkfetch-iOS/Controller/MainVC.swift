@@ -13,7 +13,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
     // MARK: - Property
-    let userData = ["New User", "newUser@example.com"]
+    let userData = ["새로운 사용자", "newUser01@example.com"]
     let regularCustomFont = "Sunflower-Light"
     let boldCustomFont = "Sunflower-Bold"
     let userIconConfiguration = UIImage.SymbolConfiguration(pointSize: 20)
@@ -30,7 +30,7 @@ class MainVC: UIViewController {
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // view.backgroundColor = .systemCyan
+        loadDataFromUserDefault()
         /// MainVC - Cell등록
         self.mainCollectionView.register(UserCell.uiNib, forCellWithReuseIdentifier: UserCell.reuseIdentifier)
         self.mainCollectionView.register(IntroCell.uiNib, forCellWithReuseIdentifier: IntroCell.reuseIdentifier)
@@ -44,22 +44,39 @@ class MainVC: UIViewController {
         if dataStatus == true {
             print("activated")
             self.mainCollectionView.reloadData()
+            saveDatasourceToUserDefaults(canvasDatasource)
         }
-       
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Method
     
+    // 앱이 종료되기 전 남아있는 데이터를 userdefaults에 저장해주는 function
+    func saveDatasourceToUserDefaults(_ willSaveData: CanvasDataSource) {
+        if !canvasDatasource.data.isEmpty {
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(canvasDatasource.data), forKey: "canvasLists")
+        }
+    }
+    // 저장된 데이터소스가 userdefaults에 있으면 load해주는 function
+    func loadDataFromUserDefault() {
+        if let data = UserDefaults.standard.value(forKey: "canvasLists") as? Data {
+            canvasDatasource.data = try! PropertyListDecoder().decode([Canvas].self, from: data)
+        }
+    }
+    
     /// contentVC에 셀 이미지를 클릭하면 canvas View로 넘어가는 function
-    @IBAction func nextVC(_ index: Int) {
+    @IBAction func nextVC(_ uniqueId: String) {
         guard let canvasVC = self.storyboard?.instantiateViewController(withIdentifier: CanvasVC.identifier) as? CanvasVC
         else { return }
         canvasVC.delegate = self
         canvasVC.dataStatus = dataStatus
-        
-        // 이때 몇번째 cell이 선택되었는지 정보를 같이 넘긴다. (그래야 삭제를 index를 사용해서 삭제할수 잇음)
-        canvasVC.IndexOfdataSource = index
+        // 이때 cell이 선택된 Canvas의 정보를 같이 넘겨준다. (canvasDataSource.data == canvas)
         canvasVC.canvasDataSource = canvasDatasource
+        canvasVC.canvasUUID = uniqueId
         self.navigationController?.pushViewController(canvasVC, animated: true)
     }
 }
@@ -99,7 +116,7 @@ extension MainVC: UICollectionViewDataSource {
             if indexPath.row == 0 {
                 cell.operatingIcon.image = UIImage(systemName: "plus", withConfiguration: operatingIconConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal)
             } else if indexPath.row == 1 {
-                cell.operatingIcon.image = UIImage(systemName: "trash", withConfiguration: operatingIconConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal)
+                cell.operatingIcon.image = UIImage(systemName: "arrow.up.arrow.down", withConfiguration: operatingIconConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal)
             }
             
             return cell
@@ -109,9 +126,11 @@ extension MainVC: UICollectionViewDataSource {
             
             for i in 0..<canvasDatasource.data.count {
                 if indexPath.row == i {
-                    let uniqueFileName: String = canvasDatasource.findUUID(i, data: canvasDatasource.data)
-                    if let image: UIImage = ImageFileManager.shared.getSavedImage(named: uniqueFileName) {
-                        cell.canvasImage.image = image
+                    if canvasDatasource.data.count > 0 {
+                        let uniqueId: String = canvasDatasource.data[i].canvasId!
+                        if let image: UIImage = ImageFileManager.shared.getSavedImage(named: uniqueId) {
+                            cell.canvasImage.image = image
+                        }
                     }
                     cell.canvasNameLabel.text = canvasDatasource.data[i].canvasName
                     cell.canvasNameLabel.font = UIFont(name: regularCustomFont, size: 12.0)
@@ -119,7 +138,7 @@ extension MainVC: UICollectionViewDataSource {
                     cell.canvasCreatedDate.font = UIFont(name: regularCustomFont, size: 10.0)
                 }
             }
-            cell.backgroundColor = .gray
+            cell.backgroundColor = UIColor(rgb:0x20A0D0)
             return cell
         }
         
@@ -144,8 +163,8 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 40, height: 30)
         }
         if indexPath.section == 3 {
-            let width = self.view.frame.width * 0.45
-            let height = self.view.frame.width * 0.7
+            let width = self.view.frame.width * 0.4
+            let height = self.view.frame.width * 0.65
             return CGSize(width: width, height: height)
         }
         return CGSize(width: self.view.frame.width, height: self.view.frame.height)
@@ -154,8 +173,8 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let inset = CGFloat(0)
         if section == 3 {
-            let verticalInset = self.view.frame.width * 0.025
-            let horizontalInset = self.view.frame.width * 0.05/3
+            let verticalInset = self.view.frame.width * 0.05
+            let horizontalInset = self.view.frame.width * 0.1/3
             return UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
         }
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
@@ -164,7 +183,7 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         // self.view.frame.width * 0.025
         if section == 3 {
-            let spacing = self.view.frame.width * 0.025
+            let spacing = self.view.frame.width * 0.05
             return spacing
         }
         return CGFloat(0)
@@ -187,8 +206,11 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
                 let now = Date()
                 let date = DateFormatter()
                 date.dateFormat = "yyyy-MM-dd"
+                let path = ImageFileManager.shared.getSavedImageDir(named: uuidData)
                 
-                let canvas = Canvas(id: uuidData, image: "", name: "New Canvas \(canvasDatasource.data.count + 1)", date: String(date.string(from: now)))
+                let canvas = Canvas(id: uuidData, canvasImageUrl: path,
+                                    name: "새로운 캔버스 \(canvasDatasource.data.count + 1)",
+                                    date: String(date.string(from: now)))
                 
                 canvasDatasource.addData(canvas)
                 self.mainCollectionView.reloadData()
@@ -199,8 +221,15 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
         }
         if indexPath.section == 3 {
             print("show CanvasVC")
-            nextVC(indexPath.row)
+            for i in 0..<canvasDatasource.data.count {
+                var uniqueId: String = ""
+                if indexPath.row == i {
+                    uniqueId = canvasDatasource.data[i].canvasId!
+                    nextVC(uniqueId)
+                }
+            }
         }
+        
     }
 }
 

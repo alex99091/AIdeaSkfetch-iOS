@@ -23,7 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user.gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7n-F3-vuF">
-                        <rect key="frame" x="15" y="31" width="115" height="21"/>
+                        <rect key="frame" x="15" y="36" width="115" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="XZa-3z-Cv2" secondAttribute="trailing" constant="15" id="6Gn-xF-lPM"/>
-                    <constraint firstItem="P7n-F3-vuF" firstAttribute="top" secondItem="1M8-0e-Z5J" secondAttribute="bottom" id="9Qy-y6-bMj"/>
+                    <constraint firstItem="P7n-F3-vuF" firstAttribute="top" secondItem="1M8-0e-Z5J" secondAttribute="bottom" constant="5" id="9Qy-y6-bMj"/>
                     <constraint firstItem="1M8-0e-Z5J" firstAttribute="leading" secondItem="sG7-J5-kPW" secondAttribute="leading" constant="15" id="S6N-hW-xEX"/>
                     <constraint firstItem="1M8-0e-Z5J" firstAttribute="top" secondItem="sG7-J5-kPW" secondAttribute="top" constant="10" id="kED-wg-ssq"/>
                     <constraint firstItem="XZa-3z-Cv2" firstAttribute="centerY" secondItem="sG7-J5-kPW" secondAttribute="centerY" id="lyN-a3-Wtp"/>

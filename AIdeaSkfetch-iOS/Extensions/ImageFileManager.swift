@@ -10,6 +10,7 @@ import UIKit
 class ImageFileManager {
     static let shared: ImageFileManager = ImageFileManager()
     
+    // Canvas의 UUID로 이미지 가져오기
     func getSavedImage(named: String) -> UIImage? {
         if let dir: URL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
                                                        appropriateFor: nil, create: false) {
@@ -18,6 +19,17 @@ class ImageFileManager {
             return image
         }
         return nil
+    }
+    // Canvas의 imageurlpath로부터 이미지가져오기
+    
+    // Canvas의 이미지 경로 저장
+    func getSavedImageDir(named: String) -> String? {
+        if let dir: URL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
+                                                       appropriateFor: nil, create: false) {
+            let path: String = URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path
+            return path
+        }
+        return ""
     }
     
     func saveImage(image: UIImage, name: String, onSuccess: @escaping ((Bool) -> Void)) {
