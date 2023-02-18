@@ -10,7 +10,8 @@ import Foundation
 enum SearchAPI {
     static let baseURL = "https://api.openai.com/v1/images/generations"
     
-    static let APIkey = "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"
+    // remove APIkey to upload github
+    static let APIkey = ""
     
     enum ApiError: Error {
         case badStatus(code: Int)
