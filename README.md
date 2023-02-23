@@ -5,18 +5,16 @@
 <table>
 <tr>
 <td>
-<img src="https://user-images.githubusercontent.com/111719007/219871706-dddf36b4-bbc2-475c-926e-f66075c51c0f.png" width="270" />
+<img src="https://user-images.githubusercontent.com/111719007/219871706-dddf36b4-bbc2-475c-926e-f66075c51c0f.png" width="180" />
 </td>
 <td>
-<img src="https://user-images.githubusercontent.com/111719007/219870119-5040b0af-532b-4dd9-a13f-3b5d50226173.gif" width="270" />
-</td>
-</tr>
-<tr>
-<td>
-<img src="https://user-images.githubusercontent.com/111719007/219870117-f5b56d0a-8883-4f6b-bf52-adc0f1aaa341.gif" width="270" />
+<img src="https://user-images.githubusercontent.com/111719007/219870119-5040b0af-532b-4dd9-a13f-3b5d50226173.gif" width="180" />
 </td>
 <td>
-<img src="https://user-images.githubusercontent.com/111719007/219870897-d8b300eb-e4cb-49e5-8025-5135242246a4.gif" width="270" />
+<img src="https://user-images.githubusercontent.com/111719007/219870117-f5b56d0a-8883-4f6b-bf52-adc0f1aaa341.gif" width="180" />
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/111719007/219870897-d8b300eb-e4cb-49e5-8025-5135242246a4.gif" width="180" />
 </td>
 </tr>
 </table>
@@ -24,11 +22,9 @@
 
 ### App Description
 
-&nbsp;Our `new sketch app` is designed to make drawing easy and accurate, with a `special feature` that sets it apart from other sketching apps: `integration` with [`Dell:2's OpenAI-image generator`]("https://platform.openai.com/docs/api-reference/images/create").  
-
-&nbsp;With this integration, users can easily generate `high-quality images` by simply `typing` in `keywords`, allowing them to `incorporate` a `wide variety` of `visual elements` into their sketches with minimal effort.  
-
-&nbsp;Whether you're an artist, designer, or simply someone looking to `explore` your creative side, our sketch app is a powerful tool that can help you `bring your ideas` to life in new and exciting ways.   
+&nbsp; 이 앱은 사용자의 `Idea`를 [Dell:2의 OpenAI]("https://platform.openai.com/docs/api-reference/images/create") 이미지 생성을 통하여 쉽고 간편하게 그림을 그릴 수 있도록 앱입니다.
+&nbsp; `OpenAI`을 통해 사용자는 단순히 키워드를 입력하여 고품질 이미지를 `쉽게` 생성할 수 있으므로 `최소한의 노력`으로 다양한 시각적 요소를 스케치에 `통합`할 수 있습니다.
+&nbsp; 아티스트, 디자이너 또는 단순히 자신의 창의적인 측면을 탐구하려는 사람이든 관계없이 새롭고 흥미로운 방식으로 아이디어를 `실현`하는 데 사용할 수 있습니다.
 
 ### How to run
 
@@ -40,7 +36,7 @@
 
 ### Core Features
 
-The main functions of the sketching app include using a digital `canvas` to create visual art, 
+스케치 앱의 주요 기능인 스케치를 위해서 `Canvas`모델을 사용합니다.
 ```Swift
 class Canvas: NSObject, Codable {
     var canvasId: String?
@@ -50,7 +46,7 @@ class Canvas: NSObject, Codable {
     init(id: String?, canvasImageUrl: String?, name: String?, date: String?) {...}
 }
 ```
-which includes various features such as `brushes`, `erasers`, `undo/redo`, and settings to adjust the brush width, opacity, and color settings. 
+주요 기능 중에는 그릴때 필요한 `브러시`, `지우개`, `실행취소 / 다시실행`과 같은 다양한 기능과 브러시 너비, 불투명도 및 색상 설정을 조정하는 설정이 포함되어 있습니다.
 ```Swift
 func drawSketch(from fromPoint: CGPoint, to toPoint: CGPoint) {
         UIGraphicsBeginImageContext(view.frame.size)
@@ -64,7 +60,7 @@ func drawSketch(from fromPoint: CGPoint, to toPoint: CGPoint) {
         UIGraphicsEndImageContext()
     }
 ```
-Additionally, the app uses a `collection view` to display saved sketches that are saved to disk using `iOS FileManager`, which provides easy `navigation` and `access` to saved sketches.
+추가적으로, 이 앱은 `collection view`를 사용하여 각각의 생성된 스케치에 대한 간단한 저장 및 불러오기를 `iOS FileManager`를 사용합니다.
 ```Swift
 class ImageFileManager {
     static let shared: ImageFileManager = ImageFileManager()
@@ -82,8 +78,7 @@ class ImageFileManager {
     }
 }
 ```
-
-The `setting function` in the `Canvas` tool allows users to adjust various parameters, such as brush width, opacity, and color settings. The user can select the desired value by touching a corresponding circle. This feature allows for more customization and precision when creating art on the `canvas`.
+`Setting ViewController`는 브러시 폭, 투명도, 색상과 같은 도구 설정을 할 수 있는 `Setting View`를 작동시키며, 이 기능을 통하여 `CanvasView`의 값을 update합니다.
 ```Swift
 func setupSliders() {
         // brush
@@ -95,8 +90,7 @@ func setupSliders() {
         brightnessSlider.addTarget(self, action: #selector(matchColor), for: .valueChanged)
 }
 ```
-
-Another function of the app is the `search function` for images using keywords. It retrieves image data from the Dell:2 OPEN AI image generator and displays four images to the user, 
+`Search ViewController`는 이 앱의 중요한 기능인 API 키워드 검색을 작동시키며, `Search View`를 모달로 4개의 이미지를 보여주며 원하는 이미지를 선택할 수 있습니다.
 ```Swift
 SearchAPI.searchSketch(prompt: searchTerm, completion: { [weak self] result in
     guard let self = self else { return }
@@ -110,7 +104,7 @@ SearchAPI.searchSketch(prompt: searchTerm, completion: { [weak self] result in
     }
 })
 ```
-allowing them to select one to display on the `canvas view controller`. 
+선택된 이미지는 delegate protocol을 통하여 `CanvasView`의 `drawImage`에 fetch 하여 수정가능하게 합니다.
 ```Swift
 extension CanvasVC: SearchVCDelegate {
     func searchVCFinished(_ searchVC: SearchVC) {
@@ -121,8 +115,7 @@ extension CanvasVC: SearchVCDelegate {
     }
 }
 ```
-
-This feature provides users with more options and inspiration when creating art on the canvas.
+이 기능들은 사용자에게 아이디어를 스케치 할때에 영감을 제공합니다.
 
 
 
