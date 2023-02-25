@@ -5,9 +5,6 @@
 <table>
 <tr>
 <td>
-<img src="https://user-images.githubusercontent.com/111719007/219871706-dddf36b4-bbc2-475c-926e-f66075c51c0f.png" width="220" height="450" />
-</td>
-<td>
 <img src="https://user-images.githubusercontent.com/111719007/219870119-5040b0af-532b-4dd9-a13f-3b5d50226173.gif" width="220" height="450"/>
 </td>
 <td>
